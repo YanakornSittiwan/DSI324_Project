@@ -8,7 +8,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from .models import Role,Alumni,Achievement,Company,Job,Course,Education
-from .forms import AlumniUpdateForm
+from .forms import AlumniUpdateForm,AchievementUpdateForm,JobUpdateForm
 from urllib import request
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
@@ -43,54 +43,44 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('login'))
 
+
 def home(request):
     return render(request,'home.html')
+
 
 class Alumnilist(ListView):
     model = Alumni
     template_name = 'alumni_list.html'
 
-# def alumni_list(request):
-#     alumni_list = Alumni.objects.all()
-#     sys_user_list = Sys_User.object.all()
-#     alumni_dict = {"designer":designer_list , "sys_user":sys_user_list}
-#     return render(request,'.html',context=alumni_dict) ,request.FILES,instance = Alumni
+
 
 def alumni_list(request):
     alumni = Alumni.objects.all()
     return render(request,'alumni_list.html',{'alumni':alumni})
 
-def edit_profile(request):
-    
-    a_form = AlumniUpdateForm()
-    if request.method == 'POST':
-            a_form = AlumniUpdateForm( request.POST)    
-            if a_form.is_valid():
-                a_form.save()
-                messages.success(request, f'updated')
-                return redirect('profile')
-    else:
-        a_form = AlumniUpdateForm()
-
-    return render(request,'edit_profile.html',{'a_form':a_form})
 
 
 def profile(request):
     alumni = Alumni.objects.all()
-    return render(request,'profile.html',{'alumni':alumni})
+    achievement = Achievement.objects.all()
+    education = Education.objects.all()
+    course = Course.objects.all()
+    company = Company.objects.all()
+    job = Job.objects.all()
+    return render(request,'profile.html',context = {'alumni':alumni , 'achievement':achievement ,'education':education,'course':course ,'company':company,'job':job })
+
 
 def updatepro(request):
     if request.method == 'POST':
         a_form = AlumniUpdateForm(request.POST ,request.FILES, instance = request.user.alumni)
-        if a_form.is_valid():
+        if  a_form.is_valid ():
             a_form.save()
-            #messages.success(request, f'updated')
             return redirect('/profile/')
     else:
         a_form = AlumniUpdateForm(instance = request.user.alumni)
 
     context = {
-        'a_form':a_form
+        'a_form':a_form ,
     }
 
     return render(request,'up.html' , context)
@@ -116,3 +106,22 @@ class AlumniList(ListView):
 
 
     
+# def alumni_list(request):
+#     alumni_list = Alumni.objects.all()
+#     sys_user_list = Sys_User.object.all()
+#     alumni_dict = {"designer":designer_list , "sys_user":sys_user_list}
+#     return render(request,'.html',context=alumni_dict) ,request.FILES,instance = Alumni
+
+
+# def edit_profile(request):  
+#     a_form = AlumniUpdateForm()
+#     if request.method == 'POST':
+#             a_form = AlumniUpdateForm( request.POST)    
+#             if a_form.is_valid():
+#                 a_form.save()
+#                 messages.success(request, f'updated')
+#                 return redirect('profile')
+#     else:
+#         a_form = AlumniUpdateForm()
+#     return render(request,'edit_profile.html',{'a_form':a_form})
+

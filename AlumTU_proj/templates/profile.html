@@ -4,6 +4,8 @@
       <div class="'media">
         <img class = "rounded-ciecle account_img" src="{{user.alumni.image.url}}" width="70" height="70">
         <div class="media-body">
+          <h1>------------------------------------------</h1>
+          <h1>Profile</h1>
           <h2 class="account-heading">{{user.username}} </h2>
           <p class="text-secondary">{{user.email}}</p>
           <p>{{user.alumni.LinkedIn}}</p>
@@ -11,6 +13,36 @@
           <p>{{user.alumni.District}}</p>
           <p>{{user.alumni.Sub_District}}</p>
           <p>{{user.alumni.Postal_code}}</p>
+          <h1>------------------------------------------</h1>
+
+          {%with a=user.alumni %}
+          <h1>Achievementment</h1>
+            {% for achievement in achievement %}
+              {% if a == achievement.Alumni_id %}
+                <p>----------------------</p>
+                <p>{{achievement.Alumni_id}}</p>
+                <p>{{achievement.Achievement_name}}</p>
+                <p>----------------------</p>
+              {%endif%}
+            {%endfor%}
+          <h1>Education</h1>
+            {% for education in education %}
+              {% if a == education.Alumni_id %}
+                <p>{{education.Degree}} Degree {{education.Course_id.Course_title}} , {{education.Course_id.Faculty}} , (GPA:{{education.Gpa}}) </p>
+                <p>{{education.Educated_date.year}} - {{education.Graduated_date.year}} ,  Thammasat University , Pathum Thani ,  Thailand</p>          
+              {%endif%}
+            {%endfor%}
+
+          <h1>Job</h1>
+            {% for job in job%}
+              {% if a == job.Alumni_id %}
+                <p>{{job.Start_date.year}}-{{job.end_date.year}} {{job.Job_title}} at {{job.Company_num.Name}}</p>
+              {%endif%}
+            {%endfor%}
+          {%endwith%}
+
+          
+ 
         </div>
         <a href="up/">edit profile</a>
       </div>

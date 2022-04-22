@@ -7,19 +7,11 @@ class Role(models.Model):
     Role = models.CharField(max_length=50 , primary_key=True)
     Authority = models.CharField(max_length=256)
 
-# class Sys_User(models.Model):
-#     User_id = models.IntegerField(max_length=13, primary_key=True)
-#     Username = models.CharField(max_length=50)
-#     Identity_num = models.IntegerField(max_length=13)
-#     Name = models.CharField(max_length=50)
-#     Surname = models.CharField(max_length=50)
-#     Email = models.EmailField(max_length=256)
-#     PhoneNumber = models.IntegerField(max_length=10)
-#     Role = models.ForeignKey(Role, on_delete = models.CASCADE)    
-
 class Alumni(models.Model):
     Alumni_id = models.IntegerField(max_length=10 , primary_key=True)
     User_id = models.OneToOneField(User,on_delete=models.CASCADE)
+    Name = models.CharField(max_length=50 , null=True)
+    Surname = models.CharField(max_length=50 , null=True)
     image = models.ImageField(default = 'default.jpg',upload_to='profile_pic')
     LinkedIn = models.CharField(max_length=256)
     Province = models.CharField(max_length=50)
@@ -27,8 +19,6 @@ class Alumni(models.Model):
     Sub_District = models.CharField(max_length=50)
     Postal_code = models.IntegerField(max_length=5)
     PhoneNumber = models.IntegerField(max_length=10, null=True)
-    # def __str__(self):
-    #     return f'{self.User_id.username} Profile'
     def __str__(self):
         return ("Alumni id:%s mobile:%s" %(self.User_id,self.PhoneNumber))
 
