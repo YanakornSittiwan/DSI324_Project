@@ -1,0 +1,58 @@
+<html>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Identity_num</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>PhoneNumber</th>
+            <th>Role</th>
+            <th>รหัสนักศึกษา</th>
+            <th>LinkedIn</th>
+            <th>address</th>
+        </tr>
+        {% for u in sys_user%}
+        <tr>
+            <td>
+                {{u.User_id}} {{a.Alumni_id}}
+            </td>
+            <td>
+                {{u.Username}}
+            </td>
+            <td>
+                {{u.Identity_num}}
+            </td>
+            <td>
+                {{u.Name}}
+            </td>
+            <td>
+                {{u.Surname}}
+            </td>
+            <td>
+                {{u.Email}}
+            </td>
+            <td>
+                {{u.PhoneNumber}}
+            </td>
+            <td>
+                {{u.Role}}
+            </td>
+        </tr>
+        {%endfor%}
+        {%for a in alumni%}
+        <tr>
+            <td>
+                {{a.Alumni_id}}
+            </td>
+            <td>
+                {{a.LinkedIn}}
+            </td>
+            <td>
+                {{a.Province}} {{a.District}} {{a.Sub_District}} {{a.Postal_code}}
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+</html>

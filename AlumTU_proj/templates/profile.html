@@ -1,0 +1,22 @@
+<html>
+  {% load crispy_forms_tags %}
+    <div class="content_section">
+      <div class="'media">
+        <img class = "rounded-ciecle account_img" src="{{user.alumni.image.url}}" width="70" height="70">
+        <div class="media-body">
+          <h2 class="account-heading">{{user.username}} </h2>
+          <p class="text-secondary">{{user.email}}</p>
+          <p>{{user.alumni.LinkedIn}}</p>
+          <p>{{user.alumni.Province}}</p>
+          <p>{{user.alumni.District}}</p>
+          <p>{{user.alumni.Sub_District}}</p>
+          <p>{{user.alumni.Postal_code}}</p>
+        </div>
+        <a href="up/">edit profile</a>
+      </div>
+    </div>
+
+</html>
+
+
+
