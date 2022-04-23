@@ -92,24 +92,24 @@ def updatepro(request):
     return render(request,'up.html' , context=context)
 
 
-def newup(request):
-    alup = AlumniUpdateForm
-    acup = AchievementUpdateForm
-    achievement = Achievement.objects.get(Alumni_id=request.user.alumni)
-    a_form = AlumniUpdateForm(request.POST or None,instance = request.user.alumni)
-    ac_form = AchievementUpdateForm(request.POST or None,instance = achievement)
-    if request.method == 'POST':
-        if  a_form.is_valid and ac_form.is_valid():
-            a_form.save()
-            ac_form.save()
-            return redirect('/profile/')
+# def newup(request):
+#     alup = AlumniUpdateForm
+#     acup = AchievementUpdateForm
+#     achievement = Achievement.objects.get(Alumni_id=request.user.alumni)
+#     a_form = AlumniUpdateForm(request.POST or None,instance = request.user.alumni)
+#     ac_form = AchievementUpdateForm(request.POST or None,instance = achievement)
+#     if request.method == 'POST':
+#         if  a_form.is_valid and ac_form.is_valid():
+#             a_form.save()
+#             ac_form.save()
+#             return redirect('/profile/')
 
-    context = {
-    'a_form':a_form ,
-    'ac_form':ac_form,
-    }
+#     context = {
+#     'a_form':a_form ,
+#     'ac_form':ac_form,
+#     }
 
-    return render(request,'up2.html' , context=context)
+#     return render(request,'up2.html' , context=context)
 
 
 
