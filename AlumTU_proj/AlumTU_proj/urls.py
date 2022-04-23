@@ -35,6 +35,7 @@ urlpatterns = [
     path('alumlist/',AlumniList.as_view()),
     #path('<slug:slug>/',AlumniDetailView.as_view()),
     path('profile/up/',views.updatepro),
+    path('profile/up2/',views.newup),
 
 
 

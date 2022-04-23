@@ -9,6 +9,7 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from .models import Role,Alumni,Achievement,Company,Job,Course,Education
 from .forms import AlumniUpdateForm,AchievementUpdateForm,JobUpdateForm
+from .forms import AchievementUpdateForm
 from urllib import request
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
@@ -71,24 +72,53 @@ def profile(request):
 
 
 def updatepro(request):
-    if request.method == 'POST':
+    achievement = Achievement.objects.get(Alumni_id=request.user.alumni)
+    if request.method == 'POST':      
         a_form = AlumniUpdateForm(request.POST ,request.FILES, instance = request.user.alumni)
-        if  a_form.is_valid ():
+        ac_form = AchievementUpdateForm(request.POST , instance =achievement)
+        if  a_form.is_valid and ac_form.is_valid:
             a_form.save()
+            ac_form.save()
             return redirect('/profile/')
     else:
         a_form = AlumniUpdateForm(instance = request.user.alumni)
+        ac_form = AchievementUpdateForm(instance =achievement)
 
     context = {
         'a_form':a_form ,
+        'ac_form':ac_form
     }
 
-    return render(request,'up.html' , context)
+    return render(request,'up.html' , context=context)
+
+
+def newup(request):
+    alup = AlumniUpdateForm
+    acup = AchievementUpdateForm
+    achievement = Achievement.objects.get(Alumni_id=request.user.alumni)
+    a_form = AlumniUpdateForm(request.POST or None,instance = request.user.alumni)
+    ac_form = AchievementUpdateForm(request.POST or None,instance = achievement)
+    if request.method == 'POST':
+        if  a_form.is_valid and ac_form.is_valid():
+            a_form.save()
+            ac_form.save()
+            return redirect('/profile/')
+
+    context = {
+    'a_form':a_form ,
+    'ac_form':ac_form,
+    }
+
+    return render(request,'up2.html' , context=context)
+
+
 
 
 class AlumniList(ListView):
     model = Alumni
     template_name = 'al.html'
+
+
 
 
 # class AuthorUpdateView(UpdateView):
@@ -124,4 +154,6 @@ class AlumniList(ListView):
 #     else:
 #         a_form = AlumniUpdateForm()
 #     return render(request,'edit_profile.html',{'a_form':a_form})
+
+
 

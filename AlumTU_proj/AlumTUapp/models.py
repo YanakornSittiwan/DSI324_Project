@@ -14,13 +14,14 @@ class Alumni(models.Model):
     Surname = models.CharField(max_length=50 , null=True)
     image = models.ImageField(default = 'default.jpg',upload_to='profile_pic')
     LinkedIn = models.CharField(max_length=256)
+    Line = models.CharField(max_length=50 , null=True)
     Province = models.CharField(max_length=50)
     District = models.CharField(max_length=50)
     Sub_District = models.CharField(max_length=50)
     Postal_code = models.IntegerField(max_length=5)
     PhoneNumber = models.IntegerField(max_length=10, null=True)
-    def __str__(self):
-        return ("Alumni id:%s mobile:%s" %(self.User_id,self.PhoneNumber))
+    # def __str__(self):
+    #     return ("Alumni id:%s mobile:%s" %(self.User_id,self.PhoneNumber))
 
 
 
