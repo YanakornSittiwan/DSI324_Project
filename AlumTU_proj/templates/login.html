@@ -1,93 +1,233 @@
 <!DOCTYPE html>
-<!-- saved from url=(0320)https://api.tu.ac.th/account/login/?next=/o/authorize/%3Fclient_id%3Dyub8BxReXHEtvwIcxLOKlf9E6SzbitUwie6TkJ0j%26redirect_uri%3Dhttps%253A%252F%252Fvote.sa.tu.ac.th%252Foauth%252Fcomplete%252Ftu%252F%253Fredirect_state%253DpEF4v0UL7pEtEeNywShELitxNpT7Pk0d%26state%3DpEF4v0UL7pEtEeNywShELitxNpT7Pk0d%26response_type%3Dcode -->
-<html class="uk-height-1-1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title> Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+<head>
+<title>AlumTu:Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    
+  body,h1,h2,h3,h4,h5,h6{font-family: "Source Sans Pro", Arial, Helvetica, sans-serif}
   
-  <link rel="stylesheet" href="./Login_files/uikit.min.css">
-  <script src="./Login_files/uikit.min.js.download"></script>
-  <script src="./Login_files/uikit-icons.min.js.download"></script>
+  * {box-sizing: border-box;}
+
+  body {
+    margin: 0;
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  }
+
+  .topnav {
+    overflow: hidden;
+    background-color: #63666a;
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif
+  }
+
+  .topnav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif
+  }
+
+  .topnav a.active {
+    background-color: #c3002f;
+    color: white;
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif
+  }
+
+  .footer {
+    position: hidden;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #c3002f;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Style inputs */
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+
+  input[type=submit] {
+    background-color: #c3002f;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #63666a;
+  }
+
+  /* Style the container/contact section */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+
+  .column1 {
+    float: left;
+    width: 20%;
+    margin-top: 6px;
+    padding: 15px;
+  }
+
+  .column2 {
+    float: right;
+    width: 20%;
+    margin-top: 40px;
+    margin-right: 150px;
+    padding: 15px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+
+</style>
 </head>
-<body class="uk-height-1-1" data-new-gr-c-s-check-loaded="14.1057.0" data-gr-ext-installed="">
   
-<div id="containter" class="uk-background-default uk-background-cover uk-height-1-1">
-  <div class="uk-vertical-align uk-height-1-1">
-    <div class="uk-flex uk-flex-middle uk-flex-center uk-vertical-align-middle uk-height-1-1">
-      <div class="uk-card uk-box-shadow-large uk-margin uk-card-small uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">
-        <div class="uk-flex uk-flex-center uk-padding-small">
-          <img src="./Login_files/main-logo.svg" width="" height="" alt="" uk-img="">
-        </div>
-        <form method="POST">
-          <input type="hidden" name="csrfmiddlewaretoken" value="yCsZzXSWIF9mHIZakKcoBh2yovaDVHaoKq6O3e9IF6GKDtw6MSuYKl4doON7Zc18">
-          <input type="hidden" name="login_view-current_step" value="auth" id="id_login_view-current_step">
-          
-          <div class="uk-padding-small">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon uk-icon" uk-icon="icon: user"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"> <circle fill="none" stroke="#000" stroke-width="1.1" cx="9.9" cy="6.4" r="4.4"></circle> <path fill="none" stroke="#000" stroke-width="1.1" d="M1.5,19 C2.3,14.5 5.8,11.2 10,11.2 C14.2,11.2 17.7,14.6 18.5,19.2"></path></svg></span>
-
-              <input class="uk-input" type="text" name="auth-username" value="" placeholder="Username" id="id_auth-username">
-
-            </div>
-          </div>
-          <div class="uk-padding-small uk-padding-remove-vertical">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon uk-icon" uk-icon="icon: lock"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1"> <rect fill="none" stroke="#000" height="10" width="13" y="8.5" x="3.5"></rect> <path fill="none" stroke="#000" d="M6.5,8 L6.5,4.88 C6.5,3.01 8.07,1.5 10,1.5 C11.93,1.5 13.5,3.01 13.5,4.88 L13.5,8"></path></svg></span>
-              <input class="uk-input" id="id_auth-password" name="auth-password" type="password" placeholder="Password">
-            </div>
-          </div>
-          
-          
-
-          
-            
-
-            <!-- <div class="uk-padding-small">
-              <label><input class="uk-checkbox" type="checkbox"> Remember Me</label>
-            </div> -->
-            <div class="uk-padding-small">
-              <!-- <input type="hidden" name="next" value=> -->
-              <button class="uk-button uk-width-1-1 uk-margin-small-bottom uk-box-shadow-hover-large">LOGIN</button>
-            </div>
-
+<body class="w3-light-grey">
+  
+  <!-- Header -->
+  <div class="container">
+    <div class="row">
+      <div class="column1">
+        <img src="https://ci.tu.ac.th/uploads/ci/ci-logo.svg" style="margin-left: 100px; margin-top: 20px; margin-bottom: 20px; width:500px;height:200px;">
+      </div>
+      <div class="column2">
+        {% load crispy_forms_tags %}
+        <form method='POST'>
+          {% csrf_token %}
+          <input type="text" placeholder="Username" {{form.username}}>
+          <input type="password" placeholder="Password" {{form.password}}>
+          <input type="submit" value="Login">
         </form>
-
       </div>
     </div>
   </div>
-
-  <style type="text/css">
-    #containter {
-      background-color: #f5f5f5
-    }
-
-    .uk-button {
-      background-color: #c00832;
-      color: #fff;
-    }
-
-    .uk-form-icon {
-      color: #c00832;
-    }
-
-    .uk-card {
-      background-color: #fff
-    }
-  </style>
   
-
-</div></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
-
-  {% load crispy_forms_tags %}
-  <form class="form-group"  method='POST' >
-    <h1>LOG IN</h1>
-    {% csrf_token %}
-    {{form}}
-    <button type="submit" class="btn btn-siccess">Login</button>
-    <p>create an account <a href="/signup/">here</a></p>
-  </form>
-
+  
+  <!-- Navigation Bar -->
+  <div class="topnav" style="font-size:18px;">
+    <a class="active" href="#home">Home</a>
+    <a href="#about">Profile</a>
+    <a href="#contact">Connection</a>
+  </div>
+  
+  <!-- Page content -->
+  <div class="w3-content" style="max-width:1532px;">
+  
+    <div class="w3-container w3-margin-top" id="rooms">
+      <h3><b>Thammasat University News</b></h3>
+    </div>
+  
+    <div class="w3-row-padding w3-padding-8">
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-container w3-white">
+          <center><img src="https://reg.tu.ac.th/th/Picture/PageFull/ee448ef0-e679-4d66-aa10-a26c35d47d89" style="width:400px;height:200px; margin-top: 10px; border-radius: 3px;"></center>
+          <h3 style="text-align: center;"><a href="#news"><b>โครงการคุยกับสำนักงานทะเบียนนักศึกษา สถาบันเทคโนโลยีนานาชาติสิรินธร</b></a></h3>
+          <p style="text-align: center;"> สำนักงานทะเบียนนักศึกษา  ได้จัดทำโครงการคุยกับสำนักงานทะเบียนนักศึกษา เพื่อเป็นการสื่อสารข้อมูลการบริการต่าง ๆ ให้กับกลุ่มผู้รับบริการทราบ และปฏิบัติตามข้อบังคับและระเบียบต่าง ๆ ของมหาวิทยาลัยธรรมศาสตร์ได้อย่างถูกต้อง  รวมไปถึงการปรับกระบวนการปฏิบัติงานระหว่างคณะ หน่วยงานต่าง ๆ ในมหาวิทยาลัยธรรมศาสตร์ กับสำนักงานทะเบียนฯ ให้เป็นไปด้วยความถูกต้อง และเป็นแนวทางเดียวกัน</p>
+        </div>
+      </div>
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-container w3-white">
+          <center><img src="https://reg.tu.ac.th/th/Picture/PageFull/8d174f1e-9944-4260-aa12-76cfe480993e" style="width:400px;height:200px; margin-top: 10px; border-radius: 3px;"></center>
+          <h3 style="text-align: center;"><a href="#news"><b>โครงการพัฒนาบุคลากร "ปลดล็อกโรคฮิต ออฟฟิศ ซินโดรม"</b></a></h3>
+          <p style="text-align: center;">เพื่อเป็นการสร้างความรู้ความเข้าใจต่อโรคออฟฟิศ ซินโดรม ให้กับบุคลากรสำนักงานทะเบียนฯ นอกจากนี้ยังเป็นการกระตุ้นให้บุคลากรรู้จักการประเมินความเสี่ยงและป้องกันอันตรายจากออฟฟิศ ซินโดรม ซึ่งแบ่งการอบรมเป็น 2 รุ่นได้แก่
+            รุ่นที่ 1   วันที่ 20 พฤศจิกายน 2562 และรุ่นที่ 2 วันที่ 21 พฤศจิกายน 2562 เวลา 13.00 – 16.00 น. ณ ห้องขุมทรัพย์แห่งปัญญา สำนักงานทะเบียนนักศึกษา มธ. ศูนย์รังสิต</p>
+        </div>
+      </div>
+      <div class="w3-third w3-margin-bottom">
+        <div class="w3-container w3-white">
+          <center><img src="https://reg.tu.ac.th/th/Picture/PageFull/7db9fa8b-ed5e-4e7a-bc45-8477fe8d9c57" style="width:400px;height:200px; margin-top: 10px; border-radius: 3px;"></center>
+          <h3 style="text-align: center;"><a href="#news"><b>กิจกรรมอบรมโครงการ Lean Project</b></a></h3>
+          <p style="text-align: center;">สำนักงานทะเบียนนักศึกษามีการจัดทำแผนยุทธศาสตร์ SO Proud ซึ่งในกลยุทธ์ O1 บูรณาการการใช้ทรัพยากรในการบริหารจัดการอย่างคุ้มค่าและเกิดประโยชน์สูงสุด เพื่อให้การดำเนินงานของสำนักงานทะเบียนนักศึกษาสามารถปรับเปลี่ยนไปตามสถานการณ์ปัจจุบันได้ ดังนั้น เพื่อการดำเนินกิจกรรมตามโครงการ Lean Project เป็นไปในแนวทางที่ถูกต้อง และสามารถนำความรู้ที่ได้ไปปรับการกระบวนการทำงานภายในสำนักงานทะเบียนนักศึกษา</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="w3-container">
+      <h3><b>Today News</b></h3>
+    </div>
     
-      
+    <div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
+      <div class="w3-half w3-margin-bottom">
+        <div class="w3-display-container">
+          <img src="https://sci.tu.ac.th/wp-content/uploads/2021/10/%E0%B8%97%E0%B8%B8%E0%B8%99%E0%B8%A7%E0%B8%B4%E0%B8%88%E0%B8%B1%E0%B8%A2-02-1024x684.jpg" alt="Cinque Terre" style="width:100%">
+        </div>
+      </div>
+      <div class="w3-half">
+        <div class="w3-row-padding" style="margin:0 -16px">
+          <div class="w3-half w3-margin-bottom">
+            <div class="w3-display-container">
+              <img src="https://reg.tu.ac.th/th/Picture/PageFull/07b94942-e66f-4e39-b8c0-de3bd4eb0cf6" alt="" style="width:100%">
+            </div>
+          </div>
+          <div class="w3-half w3-margin-bottom">
+            <div class="w3-display-container">
+              <img src="https://reg.tu.ac.th/th/Picture/PageFull/8f1288c1-493c-43d0-bea6-3f18400d8df9" alt="" style="width:100%">
+            </div>
+          </div>
+        </div>
+        <div class="w3-row-padding" style="margin:0 -16px">
+          <div class="w3-half w3-margin-bottom">
+            <div class="w3-display-container">
+              <img src="https://reg.tu.ac.th/th/Picture/PageFull/836e2c68-5efe-40c1-a8ac-e4978ed13d95" alt="" style="width:100%">
+            </div>
+          </div>
+          <div class="w3-half w3-margin-bottom">
+            <div class="w3-display-container">
+              <img src="https://reg.tu.ac.th/th/Picture/PageFull/06436b71-e20b-4f13-bc95-29daeccf9b90" alt="" style="width:100%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   
+  <!-- Footer -->
+  <div class="footer">
+    <h2>Contact</h2>
+    <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>Pathumthani<br>
+    <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2<br>
+    <i class="fa fa-envelope w3-text-white" style="width:30px"> </i> Email : ThammasatUniversity@dome.tu.ac.th<br>
+  </div> 
+
 </body>
 </html>

@@ -19,21 +19,18 @@ from AlumTUapp import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import ListView
-from AlumTUapp.views import AlumniList
+# from AlumTUapp.views import AlumniList
 from django.urls import path, include # New
 #from django.views.generic import TemplateView # New
 
 urlpatterns = [
+    path('',views.loginpage,name='login'),
     path('admin/', admin.site.urls),
     path('login/',views.loginpage,name='login'),
     path('signup/',views.signuppage),
     path('logout/', views.user_logout, name='logout'),
     path('home/',views.home),
-    path('alumni_list/',views.alumni_list),
     path('profile/',views.profile),
-    # path('profile/edit_profile/',views.edit_profile),
-    path('alumlist/',AlumniList.as_view()),
-    #path('<slug:slug>/',AlumniDetailView.as_view()),
     path('profile/up/',views.updatepro),
 
 

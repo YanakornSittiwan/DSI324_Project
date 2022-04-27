@@ -1,10 +1,11 @@
-<html>
+<!-- <html>
   {% load crispy_forms_tags %}
     <div class="content_section">
       <div class="'media">
         <img class = "rounded-ciecle account_img" src="{{user.alumni.image.url}}" width="70" height="70">
         <div class="media-body">
-          
+
+          <h1>{{user.alumni.Alumni_id}}</h1>
           <h1>Profile</h1>
           <h2 class="account-heading">{{user.username}} </h2>
           <p class="text-secondary">{{user.email}}</p>
@@ -14,6 +15,7 @@
           <p>{{user.alumni.Province}}</p>
           <p>{{user.alumni.District}}</p>
           <p>{{user.alumni.Sub_District}}</p>
+          <p>{{user.alumni.Address}}</p>
           <p>{{user.alumni.Postal_code}}</p>
     
           {%with a=user.alumni %}
@@ -44,10 +46,284 @@
  
         </div>
         <a href="up/">edit profile</a>
-        <!-- <a href="up2/">edit profile2</a> -->
+      
       </div>
     </div>
 
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  html,body,h1,h2,h3,h4,h5,h6 {font-family: "Source Sans Pro", Arial, Helvetica, sans-serif}
+
+  body {
+    margin: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: gray;
+    position: fixed;
+    height: 100%;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  li a.active {
+    background-color: #c3002f;
+    color: white;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #63666A;
+    color: white;
+  }
+
+  * {
+  box-sizing: border-box;
+}
+
+  body {
+    margin: 0;
+  }
+
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width:600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+  header{
+    contain: content;
+    background-color: lightgray;
+    width: 85%;
+    margin-left: 15%;
+  }
+
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    background-color: #c3002f;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  /* Main content */
+  .main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: #c3002f;
+    color: white;
+  }
+
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+  /* Some media queries for responsiveness */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+  }
+</style>
+</head>
+
+<body class="w3-light-grey">
+
+<!-- Navigation Bar -->
+<ul>
+  <div style="font-size: 21px;">
+    <center><img src="https://fph.tu.ac.th/uploads/fph/DownloadLogo/2018_Thammasat_main_logo%202561.png" style="height: 150px; width: 150px; margin-top: 25px; margin-bottom: 25px;"></center>
+  <li><a href="#home">Home</a></li>
+  <button class="dropdown-btn active">Profile<i class="fa fa-caret-down"></i></button>
+  <div class="dropdown-container">
+    <li><a href="up/">Edit Profile</a></li>
+  </div>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+  </div>
+</ul>
+
+<!-- Header -->
+<header>
+  <img class="w3-image" src="https://ci.tu.ac.th/uploads/ci/ci-logo.svg" style="width:500px;height:200px; margin-left: 60%;">
+  	<div class="w3-display-right w3-padding w3-col l6 m8">
+    	<div class="w3-container w3-display-right w3-padding-8">
+      	<form action="/action_page.php" target="_blank"></form>
+      </div>
+    </div>
+</header>
+
+<!-- Page Container -->
+<div style="margin-left:15%; padding:1px 16px; height:1000px;">
+    {% load crispy_forms_tags %}
+    <!-- Left Column -->
+    <div class="row">
+      <div class="column">
+        <div class="w3-display-container">
+          <img src="{{user.alumni.image.url}}" style="width: 200px; height: 250px; margin-left: 30%; margin-top: 20px;" alt="Avatar">
+        </div>
+        <div class="w3-container" style="margin-left: 20px; margin-top: 20px;">
+          <h2 class="w3-text-grey w3-padding-8"><i class="w3-margin-right w3-xlarge material-icons" style="color: #c3002f;">person</i><b>Profile</b></h2>
+          <p><i class="material-icons w3-margin-right w3-large w3-padding-14">person</i><b>Name : </b>{{user.username}} {{user.alumni.Name}} {{user.alumni.Surname}}</p>
+          <p><i class="material-icons w3-margin-right w3-large w3-padding-14">email</i><b>Email : </b>{{user.email}}</p>
+          <p><i class="material-icons w3-margin-right w3-large w3-padding-14">phone</i><b>Phone : </b>{{user.alumni.PhoneNumber}}</p>
+          <p><i class="fa fa-linkedin w3-margin-right w3-large w3-padding-14"></i><b>LinkedIn : </b>{{user.alumni.LinkedIn}}</p>
+          <p><i class="material-icons w3-margin-right w3-large w3-padding-14">call</i><b>Line ID : </b>{{user.alumni.Line}}</p>
+          <p><i class="material-icons w3-margin-right w3-large w3-padding-14">place</i><b>Address : </b>123/456 , {{user.alumni.Sub_District}} , {{user.alumni.District}} , {{user.alumni.Province}} , {{user.alumni.Postal_code}}</p>
+          <hr style="height:2px; border-width:0; background-color:black">
+          {%with a=user.alumni %}
+          <h2 class="w3-padding-8"><i class="fa fa-certificate w3-margin-right w3-xlarge" style="color: #c3002f;"></i><b>Archievement</b></h2>
+          <div class="w3-container">
+              {% for achievement in achievement %}
+                {% if a == achievement.Alumni_id %}
+                  <p style="font-size: 16px; color: #63666A;"><b>Year Rewarded : </b>{{achievement.Date.year}}</p>
+                  <p style="font-size: 16px; color: #63666A;"><b>Reward Name : </b>{{achievement.Achievement_name}}</p>
+                  <p style="font-size: 16px; color: #63666A;"><b>Institute : </b>{{achievement.Institute}}</p>
+                  <hr style="height:2px; border-width:0; background-color:black">
+                  {%endif%}
+              {%endfor%}
+          </div>
+        {%endwith%}
+        </div>
+      <!-- End Left Column -->  
+      </div>
+      
+      <!-- Right Column -->
+      <div class="column">
+        {%with a=user.alumni %}
+          <h2 class="w3-text-grey w3-padding-16" style="margin-left: 15px; margin-top: 20px;"><i class="fa fa-book fa-fw w3-margin-right w3-xxlarge" style="color: #c3002f;"></i><b>Education</b></h2>
+            {% for education in education %}
+              {% if a == education.Alumni_id %}
+                <div class="w3-container" style="margin-left: 25px;">
+                  <h5 class="w3-opacity"><b>Faculty</b></h5>
+                  <p style="color: #c3002f;"><i class="fa-fw w3-margin-right"></i>{{education.Course_id.Faculty}}</p>
+                  <hr style="height:2px; border-width:0; background-color:black">
+                  <h5 class="w3-opacity"><b>Major</b></h5>
+                  <p style="color: #c3002f;"><i class="fa-fw w3-margin-right"></i>{{education.Course_id.Course_title}}</p>
+                  <hr style="height:2px; border-width:0; background-color:black">
+                  <h5 class="w3-opacity"><b>Degree</b></h5>
+                  <p style="color: #c3002f;"><i class="fa-fw w3-margin-right"></i>{{education.Degree}}</p>
+                  <hr style="height:2px; border-width:0; background-color:black">
+                  <h5 class="w3-opacity"><b>GPA</b></h5>
+                  <p style="color: #c3002f;"><i class="fa-fw w3-margin-right"></i>{{education.Gpa}}</p>
+                  <hr style="height:2px; border-width:0; background-color:black">
+                  <h5 class="w3-opacity"><b>Duration</b></h5>
+                  <p style="color: #c3002f;"><i class="fa-fw w3-margin-right"></i>{{education.Educated_date.year}} - {{education.Graduated_date.year}}</p>
+                  <hr style="height:2px; border-width:0; background-color:black">
+                </div>  
+              {%endif%}
+            {%endfor%}
+
+          <h2 class="w3-text-grey w3-padding-16" style="margin-left: 15px;"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge" style="color: #c3002f;"></i><b>Work Information</b></h2>
+            {% for job in job%}
+              {% if a == job.Alumni_id %}
+                <div class="w3-container" style="margin-left: 25px;">
+                  <h5 class="w3-opacity"><b>Duration : </b>{{job.Start_date.year}}-{{job.end_date.year}}</h5>
+                  <h5 class="w3-opacity"><b>Career : </b>{{job.Job_title}}</h5>
+                  <h5 class="w3-opacity"><b>Work At : </b>{{job.Company_num.Name}}</h5>
+                  <hr style="height:2px; border-width:0; background-color:black">
+                </div>  
+              {%endif%}
+            {%endfor%} 
+        {%endwith%}
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+<!-- End Page Container -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-red w3-center w3-margin-top">
+  <div class="w3-container" id="contact">
+    <h2>Contact</h2>
+    <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>Pathumthani<br>
+    <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2<br>
+    <i class="fa fa-envelope w3-text-white" style="width:30px"> </i> Email : ThammasatUniversity@dome.tu.ac.th<br>
+    </div>
+  </footer>
+
+
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+    
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+      } else {
+      dropdownContent.style.display = "block";
+      }
+      });
+    }
+    </script>
+
+</body>
 </html>
 
 

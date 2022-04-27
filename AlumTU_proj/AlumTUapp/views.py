@@ -92,68 +92,26 @@ def updatepro(request):
     return render(request,'up.html' , context=context)
 
 
-# def newup(request):
-#     alup = AlumniUpdateForm
-#     acup = AchievementUpdateForm
-#     achievement = Achievement.objects.get(Alumni_id=request.user.alumni)
-#     a_form = AlumniUpdateForm(request.POST or None,instance = request.user.alumni)
-#     ac_form = AchievementUpdateForm(request.POST or None,instance = achievement)
-#     if request.method == 'POST':
-#         if  a_form.is_valid and ac_form.is_valid():
-#             a_form.save()
-#             ac_form.save()
-#             return redirect('/profile/')
-
-#     context = {
-#     'a_form':a_form ,
-#     'ac_form':ac_form,
-#     }
-
-#     return render(request,'up2.html' , context=context)
+class AchievementCreateView(CreateView):
+    model = Achievement
+    template_name = 'Achievement_create.html'
+    fields = ['username','name','mobile','email','photo']
+    success_url="/profile/"
 
 
 
 
-class AlumniList(ListView):
-    model = Alumni
-    template_name = 'al.html'
 
 
 
 
-# class AuthorUpdateView(UpdateView):
-#     model = Alumni
-#     fields = ['LinkedIn']
-#     template_name_suffix = '_update_form'
 
-# class DesignerDetailView(DetailView):
-#     model = Alumni
-#     context_object_name = 'Alumni'
-#     template_name = 'aldetail.html'
-#     def get_object(self):
-#         id_=self.kwargs.get('dpk')
-#         return get_object_or_404(Designer,id=int(id_))
 
 
     
-# def alumni_list(request):
-#     alumni_list = Alumni.objects.all()
-#     sys_user_list = Sys_User.object.all()
-#     alumni_dict = {"designer":designer_list , "sys_user":sys_user_list}
-#     return render(request,'.html',context=alumni_dict) ,request.FILES,instance = Alumni
 
 
-# def edit_profile(request):  
-#     a_form = AlumniUpdateForm()
-#     if request.method == 'POST':
-#             a_form = AlumniUpdateForm( request.POST)    
-#             if a_form.is_valid():
-#                 a_form.save()
-#                 messages.success(request, f'updated')
-#                 return redirect('profile')
-#     else:
-#         a_form = AlumniUpdateForm()
-#     return render(request,'edit_profile.html',{'a_form':a_form})
+
 
 
 
