@@ -9,10 +9,14 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from .models import Role,Alumni,Achievement,Company,Job,Course,Education
 from .forms import AlumniUpdateForm,AchievementUpdateForm,JobUpdateForm
+from django.forms.models import modelformset_factory
 from .forms import AchievementUpdateForm
 from urllib import request
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
+from django.forms import formset_factory
 
 # Create your views here.
 
@@ -71,22 +75,51 @@ def profile(request):
     return render(request,'profile.html',context = {'alumni':alumni , 'achievement':achievement ,'education':education,'course':course ,'company':company,'job':job })
 
 
+# def updatepro(request):
+#     achievement = Achievement.objects.filter(Alumni_id=request.user.alumni)
+#     if request.method == 'POST':      
+#         a_form = AlumniUpdateForm(request.POST ,request.FILES, instance = request.user.alumni)
+#         ac_form = AchievementUpdateForm(request.POST , instance =achievement)
+#         if  a_form.is_valid and ac_form.is_valid:
+#             a_form.save()
+#             ac_form.save()
+#             return redirect('/profile/')
+#     else:
+#         a_form = AlumniUpdateForm(instance = request.user.alumni)
+#         ac_form = AchievementUpdateForm(instance =achievement)
+
+#     context = {
+#         'a_form':a_form ,
+#         'ac_form':ac_form
+#     }
+
+#     return render(request,'up.html' , context=context)
+
 def updatepro(request):
-    achievement = Achievement.objects.get(Alumni_id=request.user.alumni)
+    achievement = Achievement.objects.filter(Alumni_id=request.user.alumni)
+    AchievementFormSet = modelformset_factory(Achievement, form = AchievementUpdateForm , extra=0)
+
+    job = Job.objects.filter(Alumni_id=request.user.alumni)
+    JobFormset = modelformset_factory(Job, form = JobUpdateForm , extra=0)
+
     if request.method == 'POST':      
         a_form = AlumniUpdateForm(request.POST ,request.FILES, instance = request.user.alumni)
-        ac_form = AchievementUpdateForm(request.POST , instance =achievement)
-        if  a_form.is_valid and ac_form.is_valid:
+        ac_formset = AchievementFormSet(request.POST , queryset = achievement)
+        j_formset = JobFormset(request.POST , queryset = job)
+        if  all([a_form.is_valid ,ac_formset.is_valid , j_formset.is_valid]):
             a_form.save()
-            ac_form.save()
+            ac_formset.save()
+            j_formset.save()
             return redirect('/profile/')
     else:
         a_form = AlumniUpdateForm(instance = request.user.alumni)
-        ac_form = AchievementUpdateForm(instance =achievement)
+        ac_formset = AchievementFormSet(queryset = achievement)
+        j_formset = JobFormset(queryset =job )
 
     context = {
         'a_form':a_form ,
-        'ac_form':ac_form
+        'ac_form':ac_formset,
+        'j_form':j_formset
     }
 
     return render(request,'up.html' , context=context)
@@ -95,8 +128,27 @@ def updatepro(request):
 class AchievementCreateView(CreateView):
     model = Achievement
     template_name = 'Achievement_create.html'
-    fields = ['username','name','mobile','email','photo']
-    success_url="/profile/"
+    fields = ['Achievement_name','Institute','Date']
+
+    def form_valid(self, form):
+        form.instance.Alumni_id = self.request.user.alumni
+        return super().form_valid(form)
+
+    success_url="/profile/up/"
+
+class JobCreateView(CreateView):
+    model = Job
+    template_name = 'Job_create.html'
+    fields = ['Company_num' ,'Job_title','Department','Start_date','end_date']
+
+    def form_valid(self, form):
+        form.instance.Alumni_id = self.request.user.alumni
+        return super().form_valid(form)
+
+    success_url="/profile/up/"
+
+
+
 
 
 

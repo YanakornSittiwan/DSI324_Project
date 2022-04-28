@@ -216,11 +216,20 @@
       <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div style="padding: 30px;">
-          <input
-            {{ a_form }}
-            
-            {{ ac_form }} >
+          <h1>edit profile</h1>
+           {{ a_form }} 
+          <h1>edit achievement</h1>
+          <input {{ ac_form.as_p}} >
+          <a href="arcreate/">add achievement</a>
+          <h1>edit job</h1>
+          <input {{ j_form.as_p}}>
+          <a href="jobcreate/">add Job</a>
+
+           
+
+
         </div>  
+
         <input type="submit" value="Upddate">
         <hr>
       </form>

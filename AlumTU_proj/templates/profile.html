@@ -214,6 +214,9 @@
 <!-- Page Container -->
 <div style="margin-left:15%; padding:1px 16px; height:1000px;">
     {% load crispy_forms_tags %}
+
+    <h1>{{user.alumni}}</h1>
+    <h1>{{user.alumni.Alumni_id}}</h1>
     <!-- Left Column -->
     <div class="row">
       <div class="column">
@@ -222,6 +225,7 @@
         </div>
         <div class="w3-container" style="margin-left: 20px; margin-top: 20px;">
           <h2 class="w3-text-grey w3-padding-8"><i class="w3-margin-right w3-xlarge material-icons" style="color: #c3002f;">person</i><b>Profile</b></h2>
+          <p><i class="material-icons w3-margin-right w3-large w3-padding-14">person</i><b>Name : </b>{{user.alumni.Alumni_id}}</p>
           <p><i class="material-icons w3-margin-right w3-large w3-padding-14">person</i><b>Name : </b>{{user.username}} {{user.alumni.Name}} {{user.alumni.Surname}}</p>
           <p><i class="material-icons w3-margin-right w3-large w3-padding-14">email</i><b>Email : </b>{{user.email}}</p>
           <p><i class="material-icons w3-margin-right w3-large w3-padding-14">phone</i><b>Phone : </b>{{user.alumni.PhoneNumber}}</p>

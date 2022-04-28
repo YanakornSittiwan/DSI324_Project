@@ -1,5 +1,6 @@
 from django import forms
 from .models import Alumni,Achievement,Job
+from django.forms import formset_factory
 
 class AlumniUpdateForm(forms.ModelForm):
     class Meta:
@@ -15,7 +16,11 @@ class AchievementUpdateForm(forms.ModelForm):
 class JobUpdateForm(forms.ModelForm):
     class Meta:
         model = Job
-        fields = ['Job_title','Department' ]
+        fields = ['Company_num' ,'Job_title','Department', 'Start_date','end_date']
+
+
+
+
 
 
 

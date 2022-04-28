@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.views.generic import ListView
 # from AlumTUapp.views import AlumniList
 from django.urls import path, include # New
+from AlumTUapp.views import AchievementCreateView,JobCreateView
+
 #from django.views.generic import TemplateView # New
 
 urlpatterns = [
@@ -32,6 +34,9 @@ urlpatterns = [
     path('home/',views.home),
     path('profile/',views.profile),
     path('profile/up/',views.updatepro),
+    path('profile/up/arcreate/',AchievementCreateView.as_view()),
+    path('profile/up/jobcreate/',JobCreateView.as_view()),
+    # path('arcup/<int:dpk>/',AchievementUpdateView.as_view()),
 
 
 

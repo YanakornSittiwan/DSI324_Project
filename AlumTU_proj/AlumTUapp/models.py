@@ -13,22 +13,22 @@ class Alumni(models.Model):
     Name = models.CharField(max_length=50 , null=True)
     Surname = models.CharField(max_length=50 , null=True)
     image = models.ImageField(default = 'default.jpg',upload_to='profile_pic')
-    LinkedIn = models.CharField(max_length=256 , null=True)
-    Line = models.CharField(max_length=50 , null=True)
+    LinkedIn = models.CharField(max_length=256 , null=True , blank=True)
+    Line = models.CharField(max_length=50 , null=True  , blank=True)
     Province = models.CharField(max_length=50)
     District = models.CharField(max_length=50)
     Sub_District = models.CharField(max_length=50)
     Postal_code = models.IntegerField(max_length=5)
-    Address = models.CharField(max_length=50, null=True)
+    Address = models.CharField(max_length=50, null=True , blank=True)
     PhoneNumber = models.IntegerField(max_length=10, null=True)
-    # def __str__(self):
-    #     return ("Alumni id:%s mobile:%s" %(self.User_id,self.PhoneNumber))
+    def __str__(self):
+        return ("Alumni id:%s" %(self.User_id))
 
 
 
 
 class Achievement(models.Model):
-    Achievement_id = models.IntegerField(max_length=10 , primary_key=True)
+    Achievement_id = models.IntegerField(max_length=10 , primary_key=True,auto_created = True)
     Alumni_id = models.ForeignKey(Alumni, on_delete = models.CASCADE)
     Achievement_name = models.CharField(max_length=256)
     Institute = models.CharField(max_length=50)
@@ -43,15 +43,17 @@ class Company(models.Model):
     District = models.CharField(max_length=50)
     Sub_District = models.CharField(max_length=50)
     Postal_code = models.IntegerField(max_length=5)
+    def __str__(self):
+        return ("%s" %(self.Name))
 
 class Job(models.Model):
-   Job_id = models.IntegerField(max_length=10 , primary_key=True)
+   Job_id = models.IntegerField(max_length=10 , primary_key=True,auto_created = True)
    Alumni_id = models.ForeignKey(Alumni, on_delete = models.CASCADE)
    Company_num = models.ForeignKey(Company, on_delete = models.CASCADE)
    Department = models.CharField(max_length=50)
    Job_title = models.CharField(max_length=50)
    Start_date = models.DateField()
-   end_date = models.DateField()
+   end_date = models.DateField(null=True , blank=True)
 
 class Course(models.Model):
     Course_id = models.IntegerField(max_length=10 , primary_key=True)
