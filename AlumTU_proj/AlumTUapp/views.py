@@ -18,7 +18,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.forms import formset_factory
 from django.urls import reverse
-from .filters import Jobfilter
+from .filters import Jobfilter 
 from django.forms.widgets import Select, Widget
 from django import forms
 
@@ -68,20 +68,6 @@ def alumni_list(request):
     alumni = Alumni.objects.all()
     return render(request,'alumni_list.html',{'alumni':alumni})
 
-
-
-def connection(request):
-    job = Job.objects.filter(Consent=True)
-
-    myFilter = Jobfilter(request.GET,queryset=job)
-    jobs = myFilter.qs
-    context = {
-        'job':jobs,
-        'myFilter':myFilter,
-    }
-    return render(request, 'conection.html' , context)
-
-
 def profile(request):
     alumni = Alumni.objects.all()
     achievement = Achievement.objects.all().order_by('-Date')
@@ -99,7 +85,7 @@ def updatepro(request):
 
     job = Job.objects.filter(Alumni_id=request.user.alumni)
     JobFormset = modelformset_factory(Job, form = JobUpdateForm , extra=0)
-    
+
     if request.method == 'POST':      
         a_form = AlumniUpdateForm(request.POST ,request.FILES, instance = request.user.alumni)
         ac_formset = AchievementFormSet(request.POST , queryset = achievement)
@@ -165,6 +151,42 @@ class JobCreateView(CreateView):
         form.instance.Alumni_id = self.request.user.alumni
         return super().form_valid(form)
     success_url="/profile/up/"
+
+from django.db.models import Count
+
+
+def AlumniChart(request):
+
+    Sector_count=Job.objects.values('Company__Sector').annotate(Count('Company__Sector'))
+    Industry_sector_count=Job.objects.values('Company__Industry_sector').annotate(Count('Company__Industry_sector'))
+    Campus_count=Education.objects.values('Course__Campus').annotate(Count('Course__Campus'))
+    Faculty_count=Education.objects.values('Course__Faculty').annotate(Count('Course__Faculty'))
+    Course_title_count=Education.objects.values('Course__Course_title').annotate(Count('Course__Course_title'))
+    context  = {
+        'Sector_count':Sector_count,
+        'Industry_sector_count':Industry_sector_count,
+        'Campus_count':Campus_count,
+        'Faculty_count':Faculty_count,
+        'Course_title_count':Course_title_count,
+    }
+    return render(request, 'chart.html', context)
+
+
+
+def connection(request):
+    job = Job.objects.filter(Consent=True)
+    
+    myFilterjob = Jobfilter(request.GET,queryset=job)
+    jobs = myFilterjob.qs
+    context = { 
+        'job':jobs,
+        'myFilterjob':myFilterjob,
+    }
+    return render(request, 'conection.html' , context)
+
+
+
+
 # class Signup(CreateView):
 #     form_class = JobForm
 #     model = User

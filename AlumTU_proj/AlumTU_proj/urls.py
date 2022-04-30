@@ -37,6 +37,7 @@ urlpatterns = [
     path('profile/up/arcreate/',AchievementCreateView.as_view()),
     path('profile/up/jobcreate/',JobCreateView.as_view()),
     path('con/',views.connection),
+    path('chart/',views.AlumniChart),
     # path('arcup/<int:dpk>/',AchievementUpdateView.as_view()),
 
 

@@ -1,7 +1,9 @@
 <html>
     <form method="get">
         
-        {{myFilter.form}}
+        {{myFilterjob.form}}
+
+        {{myFiletercom.form}}
 
         <input type="submit" value="Search">
 
@@ -18,9 +20,10 @@
                     <td>{{j.Job_title}} </td>
                     <td>{{j.Department}}</td>
                     <td>{{j.Company}}</td>
-                    <td>{{j.Alumni_id.Name}}</td>
+                    <td>{{j.Alumni_id.Name}} {{j.Alumni_id.Surname}}</td>
                     <td>{{j.Alumni_id.LinkedIn}}</td>
-                    <td>{{j.Alumni_id}}</td>
+                    <td>{{j.Alumni_id.Line}}</td>
+                    <td>{{j.Alumni_id.Email}}</td>
                 
             </tr>
             {%endfor%}

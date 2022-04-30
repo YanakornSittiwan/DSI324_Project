@@ -34,12 +34,30 @@ class Achievement(models.Model):
     Achievement_name = models.CharField(max_length=256)
     Institute = models.CharField(max_length=50)
     Date = models.DateField()
+
+
+Industry_sector_choice = [
+    ('เกษตรและอุตสาหกรรมอาหาร','เกษตรและอุตสาหกรรมอาหาร'),
+    ('สินค้าอุปโภคบริโภค','สินค้าอุปโภคบริโภค'),
+    ('ธุรกิจการเงิน','ธุรกิจการเงิน'),
+    ('สินค้าอุตสาหกรรม','สินค้าอุตสาหกรรม'),
+    ('อสังหาริมทรัพย์และก่อสร้าง','อสังหาริมทรัพย์และก่อสร้าง'),
+    ('ทรัพยากร','ทรัพยากร'),
+    ('บริการ','บริการ'),
+    ('เทคโนโลยี','เทคโนโลยี')
+]
+
+Sector_chioce = [
+    ('บริษัทเอกชน','บริษัทเอกชน'),
+    ('รัฐวิสาหกิจ','รัฐวิสาหกิจ'),
+    ('หน่วยงานของรัฐ','หน่วยงานของรัฐ')
+]
     
 class Company(models.Model):
     Company_num = models.IntegerField(max_length=13 , primary_key=True)
     Name = models.CharField(max_length=50)
-    Industry_sector = models.CharField(max_length=50)
-    Sector = models.CharField(max_length=50)
+    Industry_sector = models.CharField(max_length=50 , choices=Industry_sector_choice)
+    Sector = models.CharField(max_length=50 , choices=Sector_chioce)
     Province = models.CharField(max_length=50)
     District = models.CharField(max_length=50)
     Sub_District = models.CharField(max_length=50)
@@ -67,7 +85,7 @@ class Course(models.Model):
 class Education(models.Model):
     Education_id = models.IntegerField(max_length=10 , primary_key=True)
     Alumni_id = models.ForeignKey(Alumni, on_delete = models.CASCADE)
-    Course_id = models.ForeignKey(Course, on_delete = models.CASCADE)
+    Course = models.ForeignKey(Course, on_delete = models.CASCADE)
     Degree = models.CharField(max_length=50)
     Gpa = models.FloatField(max_length=4)
     Educated_date = models.DateField()
