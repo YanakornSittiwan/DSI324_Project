@@ -15,6 +15,7 @@ class Alumni(models.Model):
     image = models.ImageField(default = 'default.jpg',upload_to='profile_pic')
     LinkedIn = models.CharField(max_length=256 , null=True , blank=True)
     Line = models.CharField(max_length=50 , null=True  , blank=True)
+    Email = models.EmailField(max_length=50 , null=True  , blank=True)
     Province = models.CharField(max_length=50)
     District = models.CharField(max_length=50)
     Sub_District = models.CharField(max_length=50)
@@ -49,9 +50,10 @@ class Company(models.Model):
 class Job(models.Model):
    Job_id = models.IntegerField(max_length=10 , primary_key=True,auto_created = True)
    Alumni_id = models.ForeignKey(Alumni, on_delete = models.CASCADE)
-   Company_num = models.ForeignKey(Company, on_delete = models.CASCADE)
+   Company = models.ForeignKey(Company, on_delete = models.CASCADE)
    Department = models.CharField(max_length=50)
    Job_title = models.CharField(max_length=50)
+   Consent = models.BooleanField()
    Start_date = models.DateField()
    end_date = models.DateField(null=True , blank=True)
 

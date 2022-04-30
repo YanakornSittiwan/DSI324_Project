@@ -1,0 +1,33 @@
+<html>
+    <form method="get">
+        
+        {{myFilter.form}}
+
+        <input type="submit" value="Search">
+
+        <table>
+            <tr>
+                <th>Job Title</th>
+                <th>Department</th>
+                <th>Company</th>
+                <th>Name</th>
+                <th>LinkedIn</th>
+            </tr>
+            {% for j in job %}
+            <tr>              
+                    <td>{{j.Job_title}} </td>
+                    <td>{{j.Department}}</td>
+                    <td>{{j.Company}}</td>
+                    <td>{{j.Alumni_id.Name}}</td>
+                    <td>{{j.Alumni_id.LinkedIn}}</td>
+                    <td>{{j.Alumni_id}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+        
+    </form>
+</html>
+
+
+
