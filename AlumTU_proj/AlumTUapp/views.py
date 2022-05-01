@@ -68,6 +68,7 @@ def alumni_list(request):
     alumni = Alumni.objects.all()
     return render(request,'alumni_list.html',{'alumni':alumni})
 
+<<<<<<< HEAD
 
 
 def connection(request):
@@ -83,6 +84,8 @@ def connection(request):
     return render(request, 'conection.html' , context)
 
 
+=======
+>>>>>>> 8da4b31b6b38f8e769e39720ec2c781b8a70b2f3
 def profile(request):
     alumni = Alumni.objects.all()
     achievement = Achievement.objects.all().order_by('-Date')
@@ -187,8 +190,23 @@ def AlumniChart(request):
     return render(request, 'chart.html', context)
 
 
+<<<<<<< HEAD
 def terms(request):
     return render(request,'terms-conditions.html')
+=======
+
+def connection(request):
+    job = Job.objects.filter(Consent=True)
+    
+    myFilterjob = Jobfilter(request.GET,queryset=job)
+    jobs = myFilterjob.qs
+    context = { 
+        'job':jobs,
+        'myFilterjob':myFilterjob,
+    }
+    return render(request, 'conection.html' , context)
+
+>>>>>>> 8da4b31b6b38f8e769e39720ec2c781b8a70b2f3
 
 
 

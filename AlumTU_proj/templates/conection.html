@@ -271,6 +271,7 @@
             </thead>
             <tbody>
             {% for j in job %}
+<<<<<<< HEAD
                 <tr>              
                     <td scope="row">{{j.Job_title}} </td>
                     <td scope="row">{{j.Department}}</td>
@@ -282,6 +283,19 @@
                 </tr>
             </tbody>
               {%endfor%}    
+=======
+            <tr>              
+                    <td>{{j.Job_title}} </td>
+                    <td>{{j.Department}}</td>
+                    <td>{{j.Company}}</td>
+                    <td>{{j.Alumni_id.Name}} {{j.Alumni_id.Surname}}</td>
+                    <td>{{j.Alumni_id.LinkedIn}}</td>
+                    <td>{{j.Alumni_id.Line}}</td>
+                    <td>{{j.Alumni_id.Email}}</td>
+                
+            </tr>
+            {%endfor%}
+>>>>>>> 8da4b31b6b38f8e769e39720ec2c781b8a70b2f3
         </table>
       </div>
     </form>
