@@ -215,7 +215,7 @@
 <div class="sticky">  
   <div class="navbar">
     <a href="/home/">หน้าหลัก</a>
-    <a href="" style="background-color: #c3002f;">ข้อมูลส่วนตัว</a>
+    <a href="#pf" style="background-color: #c3002f;">ข้อมูลส่วนตัว</a>
     <a href="up/">แก้ไขข้อมูล</a>
     <a href="/con/">เครือข่ายศิษย์เก่า</a>
     <a href="/chart/">Dashboard</a>
@@ -251,13 +251,15 @@
             <p class="p1">{{user.alumni.Email}}</p>
             <h5 class="w3-opacity hh1"><b>Phone : </b></h5>
             <p class="p1">{{user.alumni.PhoneNumber}}</p>
-            <a id="job"></a>
+            
             <h5 class="w3-opacity hh1"><b>LinkedIn : </b></h5>
             <p class="p1">{{user.alumni.LinkedIn}}</p>
+            
             <h5 class="w3-opacity hh1"><b>Line ID : </b></h5>
             <p class="p1">{{user.alumni.Line}}</p>
+            <a id="job"></a>
             <h5 class="w3-opacity hh1"><b>Address : </b></h5>
-            <p class="p1">123/456 , {{user.alumni.Sub_District}} , {{user.alumni.District}} , {{user.alumni.Province}} , {{user.alumni.Postal_code}}</p>
+            <p class="p1">{{user.alumni.Sub_District}} , {{user.alumni.District}} , {{user.alumni.Province}} , {{user.alumni.Postal_code}}</p>
             
             <h2 class="w3-opacity h8" style="font-size: 22px; padding-top: 12px; margin-bottom: 30px;"><b><span>Work Info</span></b></h2>
             {%with a=user.alumni %}
@@ -291,14 +293,14 @@
               <h5 class="w3-opacity" style="font-size: 15px;"><b>GPA : </b></h5>
               <p class="p2">{{education.Gpa}}</p>
               <hr>
-              <a id="ac"></a>
+              
               <h5 class="w3-opacity" style="font-size: 15px;"><b>Educted Date : </b></h5>
               <p class="p2">{{education.Educated_date.year}}</p>
               <hr>
               <h5 class="w3-opacity" style="font-size: 15px;"><b>Graduated Date : </b></h5>
               <p class="p2">{{education.Graduated_date.year}}</p>
               
-              <h2 class="w3-text-grey h9" style="font-size: 24px; margin-bottom: 30px;" id="#job"><b><span>Achievement</span></b></h2>
+              <h2 class="w3-text-grey h9" style="font-size: 24px; margin-bottom: 30px;" id="#job"><b><span>Achievement</span></b></h2><a id="ac"></a>
               {%with a=user.alumni %}
                 {% for achievement in achievement %}
                   {% if a == achievement.Alumni_id %}
@@ -320,9 +322,9 @@
   <!------------------------------------------------------------ Footer --------------------------------------------------------------------->
   <div class="footer" style="margin-top: 10px;">
     <h2>Contact</h2>
-    <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>Pathumthani<br>
-    <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2<br>
-    <i class="fa fa-envelope w3-text-white" style="width:30px"> </i> Email : ThammasatUniversity@dome.tu.ac.th<br>
+    <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต 99 ม.18 ถ.พหลโยธิน ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี 12121<br>
+    <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2 564 4440<br>
+    <i class="fa fa-envelope w3-text-white" style="width:30px"> </i> Email : email@tu.ac.th<br>
   </div>  
 
   <script>

@@ -15,7 +15,7 @@ from .models import Role,Alumni,Achievement,Company,Job,Course,Education,User
 
 admin.site.register(Role)
 admin.site.register(Achievement)
-admin.site.register(Company)
+#admin.site.register(Company)
 admin.site.register(Job)
 
 
@@ -169,7 +169,7 @@ class EducationAdmin(admin.ModelAdmin):
                 created = Education.objects.update_or_create(
                     Education_id = fields[0],
                     Alumni_id = Alumni.objects.get(Alumni_id=fields[1]),
-                    Course_id= Course.objects.get(Course_id=fields[2]),
+                    Course= Course.objects.get(Course_id=fields[2]),
                     Degree=fields[3],
                     Gpa=fields[4],
                     Educated_date = fields[5],
@@ -183,3 +183,43 @@ class EducationAdmin(admin.ModelAdmin):
         return render(request, "admin/csv_upload.html", data)
 
 admin.site.register(Education, EducationAdmin)
+
+class CompamyAdmin(admin.ModelAdmin):
+
+    def get_urls(self):
+        urls = super().get_urls()
+        new_urls = [path('upload-csv/', self.upload_csv),]
+        return new_urls + urls
+
+    def upload_csv(self, request):
+
+        if request.method == "POST":
+            csv_file = request.FILES["csv_upload"]
+            
+            if not csv_file.name.endswith('.csv'):
+                messages.warning(request, 'The wrong file type was uploaded')
+                return HttpResponseRedirect(request.path_info)
+            
+            file_data = csv_file.read().decode("utf-8")
+            csv_data = file_data.split("\n")
+
+            for x in csv_data[1:]:
+                fields = x.split(",")
+                created = Company.objects.update_or_create(
+                    Company_num = fields[0],
+                    Name = fields[1],
+                    Industry_sector = fields[2],
+                    Sector=fields[3],
+                    Province=fields[4],
+                    District = fields[5],
+                    Sub_District =fields[6] ,
+                    Postal_code = fields[7]
+                    )
+            url = reverse('admin:index')
+            return HttpResponseRedirect(url)
+
+        form = CsvImportForm()
+        data = {"form": form}
+        return render(request, "admin/csv_upload.html", data)
+
+admin.site.register(Company, CompamyAdmin)

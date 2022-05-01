@@ -201,7 +201,7 @@
 <!----------------------------------------------------------------------- Header ----------------------------------------------------------->
 <!-- <img src="https://sv1.picz.in.th/images/2022/04/28/8FjBiy.png" style="height: 150px; width: 150px; border-radius: 25%; margin-left: 15%; margin-top: 25px; margin-bottom: 25px;"> -->
 <a id="pf"></a><a id="job"></a>
-
+<a id="up"></a>
   <header>
     <img class="w3-image" src="https://sv1.picz.in.th/images/2022/04/30/HWhDEn.png" style="width: 25%; height: 25%; margin: 2%; margin-left: 70%;">
       <div class="w3-display-right w3-padding w3-col l6 m8">
@@ -216,7 +216,7 @@
   <div class="navbar">
     <a href="/home/">หน้าหลัก</a>
     <a href="/profile/" >ข้อมูลส่วนตัว</a>
-    <a href="" style="background-color: #c3002f;">แก้ไขข้อมูล</a>
+    <a href="#up" style="background-color: #c3002f;">แก้ไขข้อมูล</a>
     <a href="/con/">เครือข่ายศิษย์เก่า</a>
     <a href="/chart/">Dashboard</a>
     <div class="subnav">
@@ -243,14 +243,14 @@
     <div class="column" style="background-color: lightgray; width: 40%; padding: 16px; margin-top: 25px; margin-left: 25px; margin-bottom: 25px;">
       {% load crispy_forms_tags %}
         <img src="{{user.alumni.image.url}}" style="border-radius: 50%; width: 150px; height: 150px; margin-left: 100px; margin-top: 10px;">
-          <div class="container" style="margin-left: 5%; margin-right: 5%; padding: 9px;"><a id="ac"></a>
+          <div class="container" style="margin-left: 5%; margin-right: 5%; padding: 9px;">
             <h2 class="w3-opacity" style="color: #333; font-size: 22px;"><b>Profile</b></h2>
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
                 <div class="input">
                   {{ a_form }}
                 </div>
-                <input type="submit" value="Upddate">
+                <input type="submit" value="Update">
           </div>
     </div>
 
@@ -259,6 +259,7 @@
         <h2 class="w3-opacity" style="font-size: 22px; padding-top: 12px;"><b>Edit Work Info.</b></h2>
           {% csrf_token %}
             {{ j_form }}
+            <a id="ac"></a>
             <p>ข้าพเจ้า ยินยอมให้นำข้อมูลไปใช้ในการเพิ่มเครือข่ายสิทธิเก่า <a href="terms/">Terms and Conditions</a></p>
             <p style="margin-top: 10px;"><a href="jobcreate/" class="addbtn"> +</a> Add More Work</p>
 
@@ -281,9 +282,9 @@
   <!------------------------------------------------------------ Footer --------------------------------------------------------------------->
   <div class="footer" style="margin-top: 10px;">
     <h2>Contact</h2>
-    <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>Pathumthani<br>
-    <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2<br>
-    <i class="fa fa-envelope w3-text-white" style="width:30px"> </i> Email : ThammasatUniversity@dome.tu.ac.th<br>
+    <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต 99 ม.18 ถ.พหลโยธิน ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี 12121<br>
+    <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2 564 4440<br>
+    <i class="fa fa-envelope w3-text-white" style="width:30px"> </i> Email : email@tu.ac.th<br>
   </div>  
 
   <!------------------------------------------------------------ Script --------------------------------------------------------------------->
