@@ -169,7 +169,7 @@ class EducationAdmin(admin.ModelAdmin):
                 created = Education.objects.update_or_create(
                     Education_id = fields[0],
                     Alumni_id = Alumni.objects.get(Alumni_id=fields[1]),
-                    Course_id= Course.objects.get(Course_id=fields[2]),
+                    Course= Course.objects.get(Course_id=fields[2]),
                     Degree=fields[3],
                     Gpa=fields[4],
                     Educated_date = fields[5],
