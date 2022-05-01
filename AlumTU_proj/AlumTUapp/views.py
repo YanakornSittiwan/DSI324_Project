@@ -192,47 +192,6 @@ def terms(request):
 
 
 
-# class Signup(CreateView):
-#     form_class = JobForm
-#     model = User
-
-# class JobCreateView(CreateView):
-#     model = Job
-#     template_name = 'Job_create.html'
-#     fields = ['Company' ,'Job_title','Department','Start_date','end_date','Consent']
-
-#     def form_valid(self, form):
-#         form.instance.Alumni_id = self.request.user.alumni
-#         return super().form_valid(form)
-
-#     def get_form(self):
-#         '''add date picker in forms'''
-#         form = super(JobCreateView, self).get_form()
-#         form.fields['end_date'].widget = forms.SelectDateWidget()
-#         return form
-    # def get_form(self):
-    #     form = super(JobCreateView, self).get_form()
-    #     form.fields['Start_date'].widget.attrs.update({'class': 'datepicker'})
-    #     return form
-
-    # def get_form(JobCreateView, form_class):
-    #     form = super(JobCreateView, self).get_form(form_class)
-    #     form.fields['Consent'].widget = forms.PasswordInput()
-    #     return form
-
-    # success_url="/profile/up/"
-
-
-    # def get_form(self):
-    #     '''add date picker in forms'''
-    #     form = super(JobCreateView, self).get_form()
-    #     form.fields['end_date'].widget = forms.SelectDateWidget()
-    #     return form
-    
-
-
-
-
 
 
 
