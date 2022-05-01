@@ -68,7 +68,6 @@ def alumni_list(request):
     alumni = Alumni.objects.all()
     return render(request,'alumni_list.html',{'alumni':alumni})
 
-<<<<<<< HEAD
 
 
 def connection(request):
@@ -84,8 +83,6 @@ def connection(request):
     return render(request, 'conection.html' , context)
 
 
-=======
->>>>>>> 8da4b31b6b38f8e769e39720ec2c781b8a70b2f3
 def profile(request):
     alumni = Alumni.objects.all()
     achievement = Achievement.objects.all().order_by('-Date')
@@ -190,64 +187,8 @@ def AlumniChart(request):
     return render(request, 'chart.html', context)
 
 
-<<<<<<< HEAD
 def terms(request):
     return render(request,'terms-conditions.html')
-=======
-
-def connection(request):
-    job = Job.objects.filter(Consent=True)
-    
-    myFilterjob = Jobfilter(request.GET,queryset=job)
-    jobs = myFilterjob.qs
-    context = { 
-        'job':jobs,
-        'myFilterjob':myFilterjob,
-    }
-    return render(request, 'conection.html' , context)
-
->>>>>>> 8da4b31b6b38f8e769e39720ec2c781b8a70b2f3
-
-
-
-# class Signup(CreateView):
-#     form_class = JobForm
-#     model = User
-
-# class JobCreateView(CreateView):
-#     model = Job
-#     template_name = 'Job_create.html'
-#     fields = ['Company' ,'Job_title','Department','Start_date','end_date','Consent']
-
-#     def form_valid(self, form):
-#         form.instance.Alumni_id = self.request.user.alumni
-#         return super().form_valid(form)
-
-#     def get_form(self):
-#         '''add date picker in forms'''
-#         form = super(JobCreateView, self).get_form()
-#         form.fields['end_date'].widget = forms.SelectDateWidget()
-#         return form
-    # def get_form(self):
-    #     form = super(JobCreateView, self).get_form()
-    #     form.fields['Start_date'].widget.attrs.update({'class': 'datepicker'})
-    #     return form
-
-    # def get_form(JobCreateView, form_class):
-    #     form = super(JobCreateView, self).get_form(form_class)
-    #     form.fields['Consent'].widget = forms.PasswordInput()
-    #     return form
-
-    # success_url="/profile/up/"
-
-
-    # def get_form(self):
-    #     '''add date picker in forms'''
-    #     form = super(JobCreateView, self).get_form()
-    #     form.fields['end_date'].widget = forms.SelectDateWidget()
-    #     return form
-    
-
 
 
 
