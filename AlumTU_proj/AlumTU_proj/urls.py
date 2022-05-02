@@ -29,7 +29,7 @@ urlpatterns = [
     path('',views.loginpage,name='login'),
     path('admin/', admin.site.urls),
     path('login/',views.loginpage,name='login'),
-    path('signup/',views.signuppage),
+    #path('signup/',views.signuppage),
     path('logout/', views.user_logout, name='logout'),
     path('home/',views.home),
     path('profile/',views.profile),
@@ -40,11 +40,6 @@ urlpatterns = [
     path('chart/',views.AlumniChart),
     path('profile/up/terms/',views.terms),
     path('profile/up/jobcreate/terms/',views.terms),
-
-
-
-
-
     #path('', TemplateView.as_view(template_name="login_page/index.html")), # New
     #path('accounts/', include('allauth.urls')), # New
 ]
