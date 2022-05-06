@@ -1,0 +1,259 @@
+<!-- <html>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Update Info</legend>
+          {{ a_form }}
+          <h1>====</h1>
+          {{ ac_form }}
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Update</button>
+        </div>
+      </form>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  html,body,h1,h2,h3,h4,h5,h6 {font-family: "Source Sans Pro", Arial, Helvetica, sans-serif}
+
+  body {
+    margin: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: gray;
+    position: fixed;
+    height: 100%;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  li a.active {
+    background-color: #c3002f;
+    color: white;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #63666A;
+    color: white;
+  }
+
+  * {
+  box-sizing: border-box;
+}
+
+  body {
+    margin: 0;
+  }
+
+  .column {
+    float: center;
+    width: 70%;
+    margin-top: 40px;
+    margin-left: 15%;
+    padding: 15px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width:600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+  /* Style inputs */
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
+
+  input[type=submit] {
+    background-color: #c3002f;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  input[type=submit]:hover {
+    background-color: #63666a;
+  }
+
+  header{
+    contain: content;
+    background-color: lightgray;
+    width: 85%;
+    margin-left: 15%;
+  }
+
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    background-color: #c3002f;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  /* Main content */
+  .main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+    font-size: 20px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: #c3002f;
+    color: white;
+  }
+
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+  /* Some media queries for responsiveness */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+  }
+
+  input[type=submit] {
+    background-color: #c3002f;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+
+</style>
+</head>
+
+<body class="w3-light-grey">
+
+<!-- Navigation Bar -->
+<ul>
+  <div style="font-size: 21px;">
+    <center><img src="https://fph.tu.ac.th/uploads/fph/DownloadLogo/2018_Thammasat_main_logo%202561.png" style="height: 150px; width: 150px; margin-top: 25px; margin-bottom: 25px;"></center>
+  <li><a href="#home">Home</a></li>
+  <button class="dropdown-btn active">Profile<i class="fa fa-caret-down"></i></button>
+  <div class="dropdown-container">
+    <li><a href="up/">Edit Profile</a></li>
+
+  </div>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+  </div>
+</ul>
+
+<!-- Header -->
+<header>
+  <img class="w3-image" src="https://ci.tu.ac.th/uploads/ci/ci-logo.svg" style="width:500px;height:200px; margin-left: 60%;">
+  	<div class="w3-display-right w3-padding w3-col l6 m8">
+    	<div class="w3-container w3-display-right w3-padding-8">
+      	<form action="/action_page.php" target="_blank"></form>
+      </div>
+    </div>
+</header>
+
+<!-- Page Container -->
+<div style="margin-left:15%; padding:1px 16px; height:1000px;"> -->
+  <!-- Left Column -->
+  <div class="w3-display-container">
+    <img src="{{user.alumni.image.url}}" style="width: 200px; height: 250px; margin-left: 30%; margin-top: 20px;">
+  </div>
+  <div class="w3-container" style="margin-left: 20px; margin-top: 20px;">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div style="padding: 30px;">
+          <h1>edit profile</h1>
+           {{ a_form }} 
+          <h1>edit achievement</h1>
+          <input {{ ac_form.as_p}} >
+          <a href="arcreate/">add achievement</a>
+          <h1>edit job</h1>
+          <input {{ j_form.as_p}}>
+          <a href="jobcreate/">add Job</a>
+        </div>  
+
+        <input type="submit" value="Upddate">
+        <hr>
+      </form>
+  </div>
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+    
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+      } else {
+      dropdownContent.style.display = "block";
+      }
+      });
+    }
+    </script>
+
+</body>
+</html>
