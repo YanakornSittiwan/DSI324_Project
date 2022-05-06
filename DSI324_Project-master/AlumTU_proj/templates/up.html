@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Alumni TU : Edit Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  html,body,h1,h2,h3,h4,h5,h6 {font-family: 'Mitr', sans-serif}
+
+  body {
+    margin: 0;
+  }
+  * {box-sizing: border-box;}
+
+  html {
+    scroll-behavior: smooth;
+  }
+  /*----------------------------------------------------------- HEADER ---------------------------------------------------------------*/
+  header{
+    contain: content;
+    background-color: lightgray;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /*------------------------------------------------------------NAV BAR------------------------------------------------------------------*/
+  div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+  .navbar {
+    overflow: hidden;
+    background-color: #333; 
+  }
+
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .subnav {
+    float: left;
+    overflow: hidden;
+  }
+
+  .subnav .subnavbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+
+  .navbar a:hover, .subnav:hover .subnavbtn {
+    background-color: #c3002f;
+    color: white;
+  }
+
+  .subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #c3002f;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+  }
+
+  .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+  }
+
+  .subnav:hover .subnav-content {
+    display: block;
+  }
+  .tablink {
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .tablink:hover {
+    background-color: #777;
+  }
+
+  /*--------------------------------------------------- PAGE CONTAINNER : CARD --------------------------------------------------------*/
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: auto;
+  }
+
+  /*------------------------------------------------ PAGE CONTAINNER : TWO COLUMN -----------------------------------------------------*/
+  * {
+    box-sizing: border-box;
+  }
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    padding: 10px;
+    height: auto;
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+    .containner{
+    padding: 20px 26px;
+  }
+  
+  /*--------------------------------------------------------------- FOOTER -------------------------------------------------------------*/
+  .footer {
+    position: hidden;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #c3002f;
+    color: white;
+    text-align: center;
+    padding: 30px;
+  }
+
+    /*---------------------------------------------------------------- Style inputs -------------------------------------------------------*/
+  input, select, textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 3px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    color: #c3002f;
+  }
+  input[type=submit] {
+    background-color: #c3002f;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  input[type=submit]:hover {
+    background-color: #63666a;
+  }
+  .red-input {
+    accent-color: #c3002f;
+    height: 15px; /* not needed */
+    width: 15px; /* not needed */
+    margin-top: 5px;
+  }
+
+  /*--------------------------------------------------- ADD BUTTON -------------------------------------------------------------*/
+  .addbtn {
+    background-color: #c3002f;
+    color: white;
+    padding: 2px 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  .addbtn:hover {
+    background-color: #63666a;
+  }
+
+  .vl {
+    border-left: 4px solid #c3002f;
+    height: auto;
+  }
+
+</style>
+</head>
+
+<body style="background-color: lightgray;">
+
+<!----------------------------------------------------------------------- Header ----------------------------------------------------------->
+<!-- <img src="https://sv1.picz.in.th/images/2022/04/28/8FjBiy.png" style="height: 150px; width: 150px; border-radius: 25%; margin-left: 15%; margin-top: 25px; margin-bottom: 25px;"> -->
+<a id="pf"></a><a id="job"></a>
+<a id="up"></a>
+  <header>
+    <img class="w3-image" src="https://sv1.picz.in.th/images/2022/04/30/HWhDEn.png" style="width: 25%; height: 25%; margin: 2%; margin-left: 70%;">
+      <div class="w3-display-right w3-padding w3-col l6 m8">
+        <div class="w3-container w3-display-right w3-padding-8">
+          <form action="/action_page.php" target="_blank"></form>
+        </div>
+      </div>
+  </header>
+
+<!----------------------------------------------------------------------- Nav Bar ----------------------------------------------------------->
+<div class="sticky">  
+  <div class="navbar">
+    <a href="/home/">หน้าหลัก</a>
+    <a href="/profile/" >ข้อมูลส่วนตัว</a>
+    <a href="#up" style="background-color: #c3002f;">แก้ไขข้อมูล</a>
+    <a href="/con/">เครือข่ายศิษย์เก่า</a>
+    <a href="/chart/">Dashboard</a>
+    <div class="subnav">
+      <button class="subnavbtn">เกี่ยวกับ <i class="fa fa-caret-down"></i></button>
+      <div class="subnav-content">
+        <a href="https://tu.ac.th/en/about">Thammasat University</a>
+        <a href="https://ci.tu.ac.th/">College of Interdisciplinary Studies (CIS)</a>
+        <a href="https://ci.tu.ac.th/alumni">Alumni TU</a>
+      </div>
+    </div>
+    <a href="/logout/" style="float: right;">Logout</a>
+  </div>
+  <div class="navbar" style="background-color: #c3002f;">
+    <a href="#pf" class="tablink" onclick="openPage('pf', this, '#c3002f')">แก้ไขประวัติส่วนตัว</a>
+    <a href="#job" class="tablink" onclick="openPage('job', this, '#c3002f')">แก้ไขข้อมูลการทำงาน</a>
+    <a href="#ac" lass="tablink" onclick="openPage('ac', this, '#c3002f')">แก้ไขผลงาน</a>
+  </div>
+</div>
+
+<!----------------------------------------------------------------- Page Container ---------------------------------------------------------->
+
+<div class="card" style="background-color: white;">
+  <div class="row">
+    <div class="column" style="background-color: lightgray; width: 40%; padding: 16px; margin-top: 25px; margin-left: 25px; margin-bottom: 25px;">
+      {% load crispy_forms_tags %}
+        <img src="{{user.alumni.image.url}}" style="border-radius: 50%; width: 150px; height: 150px; margin-left: 100px; margin-top: 10px;">
+          <div class="container" style="margin-left: 5%; margin-right: 5%; padding: 9px;">
+            <h2 class="w3-opacity" style="color: #333; font-size: 22px;"><b>Profile</b></h2>
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="input">
+                  {{ a_form }}
+                </div>
+                <input type="submit" value="Update">
+          </div>
+    </div>
+
+    <div class="column" style="width: 50%; background-color: white;">
+      <div class="w3-container" style="margin-left: 80px; margin-right: 20px; margin-top: 30px; font-size: 16px;">
+        <h2 class="w3-opacity" style="font-size: 22px; padding-top: 12px;"><b>Edit Work Info.</b></h2>
+          {% csrf_token %}
+            {{ j_form }}
+            <a id="ac"></a>
+            <p>ข้าพเจ้า ยินยอมให้นำข้อมูลไปใช้ในการเพิ่มเครือข่ายสิทธิเก่า <a href="terms/">Terms and Conditions</a></p>
+            <p style="margin-top: 10px;"><a href="jobcreate/" class="addbtn"> +</a> Add More Work</p>
+
+        <h2 class="w3-text-grey w3-padding-16" style="font-size: 22px;" id="#job"><b>Achievement</b></h2>
+          {% csrf_token %}
+          <div class="input">
+            <div style="margin-bottom: 30px;">
+              {{ ac_form.as_p }}
+          </div>
+          <p><a href="arcreate/" class="addbtn"> +</a> Add More Achievement</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!------------------------------------------------------------ Footer --------------------------------------------------------------------->
+  <div class="footer" style="margin-top: 10px;">
+    <h2>Contact</h2>
+    <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต 99 ม.18 ถ.พหลโยธิน ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี 12121<br>
+    <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2 564 4440<br>
+    <i class="fa fa-envelope w3-text-white" style="width:30px"> </i> Email : email@tu.ac.th<br>
+  </div>  
+
+  <!------------------------------------------------------------ Script --------------------------------------------------------------------->
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+    
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+      } else {
+      dropdownContent.style.display = "block";
+      }
+      });
+    }
+  </script>
+
+  <script>
+    function myFunction() {
+      var checkBox = document.getElementById("myCheck");
+      var text = document.getElementById("text");
+      if (checkBox.checked == true){
+        text.style.display = "block";
+      } else {
+        text.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
