@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+  <title>Sign up</title>
+  <style>
+    @media (min-width: 838px) and (max-height: 487px) {}
+    @media (min-width: 838px) and (min-height: 488px) {
+    .form-group{
+      color: #fff;
+      text-align: left;
+      padding-bottom: 220px;
+      padding-left: 200px;
+      font-family: 'Work Sans' ;font-size: 25px;
+      background: linear-gradient(#88bcca, #e4b784, #6ec4db);
+      margin-top: -35px;
+    }
+    button{
+      padding: 15px;
+      background-color: rgb(255, 142, 77);
+      color: white;
+      border-radius: 5px;
+      border: 0.5px solid #0092bb ;
+    }
+    h1{
+      padding-top: 40px;
+    }
+
+    /*hidescrollbar*/
+    body {
+      height: 5000px; 
+      width: 5000px; 
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+    }
+    @media (max-width: 837px) and (max-height: 487px) {}
+    @media (max-width: 837px) and (min-height: 488px) {
+      .form-group{
+      color: #fff;
+      text-align: left;
+      padding-top: 80px;
+      padding-bottom: 165px;
+      margin-bottom: 0%;
+      padding-left: 50px;
+      font-family: 'Work Sans' ;font-size: 15px;
+      background: linear-gradient(#88bcca, #e4b784, #6ec4db);
+    }
+    button{
+      padding: 15px;
+      background-color: rgb(255, 142, 77);
+      color: white;
+      border-radius: 5px;
+      border: 0.5px solid #0092bb ;
+    }
+    }
+  </style>
+</head>
+<body>
+
+  {% load crispy_forms_tags %}
+    <form class="form-group"  method='POST' >
+      <h1>REGISTER</h1>
+      {% csrf_token %}
+      {{form | crispy}}
+    <button type="submit" class="btn btn-siccess">Register</button>
+  <!-- {% crispy form %} -->
+
+
+    
+  <!-- <div class='bold-line'></div>
+  <div class='container'>
+    <div class='window'>
+      <div class='overlay'></div>
+      <div class='content'>
+        <div class='welcome'>Sign up</div>
+        <div class='input-fields'>
+          <input type='text' placeholder='Username' class='input-line full-width'></input>
+          <input type='email' placeholder='E-mail' class='input-line full-width'></input>
+          <input type='password' placeholder='Password' class='input-line full-width'></input>
+          <input type='password' placeholder='Confirmed Password' class='input-line full-width'></input>
+        </div>
+        <div class='spacing'>or already have an account <a href="http://127.0.0.1:8000/login/"><span class='highlight'>Log in?</span></a></div>
+        <div><a href="http://127.0.0.1:8000/login/"><button class='ghost-round full-width' type="submit" class="btn btn-siccess">Register</button></a></div>
+      </div>
+    </div>
+  </div> -->
+  </form>
+</body>
+</html>
