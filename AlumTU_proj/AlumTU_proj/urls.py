@@ -50,6 +50,30 @@ urlpatterns = [
     #deans's url
     path('dean/con/',views.connection3),
     path('dean/chart/',views.AlumniChart2),
+
+    #API url
+    path('api/alumni/',views.AlumniList.as_view()),
+    path('api/alumni/<int:pk>',views.AlumniDetail.as_view()),
+
+    path('api/personel/',views.PersonelList.as_view()),
+    path('api/personel/<int:pk>',views.PersonelDetail.as_view()),
+
+    path('api/company/',views.CompanylList.as_view()),
+    path('api/company/<int:pk>',views.CompanyDetail.as_view()),
+
+    path('api/achievement/',views.AchievementlList.as_view()),
+    path('api/achievement/<int:pk>',views.AchievementDetail.as_view()),
+
+    path('api/job/',views.JobList.as_view()),
+    path('api/job/<int:pk>',views.JobDetail.as_view()),
+
+    path('api/course/',views.CourseList.as_view()),
+    path('api/course/<int:pk>',views.CourseDetail.as_view()),
+
+    path('api/education/',views.EducationList.as_view()),
+    path('api/education/<int:pk>',views.EducationDetail.as_view()),
+    path('api-auth/', include('rest_framework.urls'))  # New
+
 ]
 
 if True:

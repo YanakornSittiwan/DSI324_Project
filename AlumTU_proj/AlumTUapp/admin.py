@@ -37,7 +37,7 @@ class UserAdmin(BaseUserAdmin):
             csv_file = request.FILES["csv_upload"]
             
             if not csv_file.name.endswith('.csv'):
-                messages.warning(request, 'The wrong file type was uploa ded')
+                messages.warning(request, 'The wrong file type was uploaded')
                 return HttpResponseRedirect(request.path_info)
             
             file_data = csv_file.read().decode("utf-8")

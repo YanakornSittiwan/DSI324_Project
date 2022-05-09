@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse ,HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from django.contrib.auth.models import Group
-from django.views.generic.edit import CreateView
+from django.contrib.auth.models import Group , User
+from django.views.generic.edit import CreateView , UpdateView
 from django.views.generic.detail import DetailView
+from django.views.generic.base import TemplateView
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
 from .models import Role,Alumni,Achievement,Company,Job,Course,Education,Personel
@@ -12,17 +13,18 @@ from .forms import AlumniUpdateForm,AchievementUpdateForm,JobUpdateForm,DateInpu
 from django.forms.models import modelformset_factory
 from .forms import AchievementUpdateForm
 from urllib import request
-from django.views.generic.base import TemplateView
-from django.views.generic.edit import UpdateView
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import User
 from django.forms import formset_factory
 from django.urls import reverse
 from .filters import Jobfilter ,Educationfilter
 from django.forms.widgets import Select, Widget
 from django import forms
 
+#API
 
+from .serializers import AlumniSerializer,PersonelSerializer,AchievementSerializer,CompanySerializer,JobSerializer,CourseSerializer,EducationSerializer
+from rest_framework import generics, permissions
+from django.http import JsonResponse
 # Create your views here.
 
 def signuppage(request):
@@ -294,8 +296,69 @@ def alumni_info(request, pk, epk):
     return render(request,'alumni_info.html',context)
 
 
+#API views
 
-        
+class AlumniList(generics.ListAPIView):
+    queryset  = Alumni.objects.all()
+    serializer_class  = AlumniSerializer
+
+class AlumniDetail(generics.RetrieveAPIView):
+    queryset  = Alumni.objects.all()
+    serializer_class  = AlumniSerializer
+
+
+class PersonelList(generics.ListAPIView):
+    queryset  = Personel.objects.all()
+    serializer_class  = PersonelSerializer
+
+class PersonelDetail(generics.RetrieveAPIView):
+    queryset  = Personel.objects.all()
+    serializer_class  = PersonelSerializer
+
+
+class AchievementlList(generics.ListAPIView):
+    queryset  = Achievement.objects.all()
+    serializer_class  = AchievementSerializer
+
+class AchievementDetail(generics.RetrieveAPIView):
+    queryset  = Achievement.objects.all()
+    serializer_class  = AchievementSerializer
+
+
+class CompanylList(generics.ListAPIView):
+    queryset  = Company.objects.all()
+    serializer_class  = CompanySerializer
+
+class CompanyDetail(generics.RetrieveAPIView):
+    queryset  = Company.objects.all()
+    serializer_class  = CompanySerializer
+
+
+class JobList(generics.ListAPIView):
+    queryset  = Job.objects.all()
+    serializer_class  = JobSerializer
+
+class JobDetail(generics.RetrieveAPIView):
+    queryset  = Job.objects.all()
+    serializer_class  = JobSerializer
+
+
+class CourseList(generics.ListAPIView):
+    queryset  = Course.objects.all()
+    serializer_class  = CourseSerializer
+
+class CourseDetail(generics.RetrieveAPIView):
+    queryset  = Course.objects.all()
+    serializer_class  = CourseSerializer
+
+
+class EducationList(generics.ListAPIView):
+    queryset  = Education.objects.all()
+    serializer_class  = EducationSerializer
+
+class EducationDetail(generics.RetrieveAPIView):
+    queryset  = Education.objects.all()
+    serializer_class  = EducationSerializer   
 
 
 
