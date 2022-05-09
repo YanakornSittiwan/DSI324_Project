@@ -8,3 +8,48 @@
   3)มีการขอคำยินยอมให้นำข้อมูลการทำงานและข้อมูลการติดต่อเปิดเผยต่อผู้ใช้คนอื่น \
   4)สามารถเรียกดูข้อมูล การทำงานและการติดต่อกับผู้ใช้คนอื่น \
   5)ระบบสามารถแสดงกราฟภาพรวมการทำงาน และการศึกษาของศิษย์เก่า
+  
+## ขั้นตอนการ Deploy
+เข้าไปยังโฟลเดอร์ของโปรเจค
+```
+cd AlumTU_proj
+```
+ลอคอิน Heroku
+```
+heroku login
+```
+```
+heroku create alumapp
+```
+
+```
+heroku config:set DISABLE_COLLECTSTATIC=1
+```
+
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
+
+```
+git add .
+git commit -m "deploy"
+git push heroku master
+```
+
+
+```
+heroku run python manage.py makemigrations
+heroku run python manage.py migrate
+```
+
+```
+heroku open
+```
+
+
+
+
+
+
+  
+  
