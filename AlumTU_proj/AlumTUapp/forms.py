@@ -1,5 +1,5 @@
 from django import forms
-from .models import Alumni,Achievement,Job
+from .models import Alumni,Achievement,Job,Education
 from django.forms import formset_factory
 
 class AlumniUpdateForm(forms.ModelForm):
@@ -27,6 +27,11 @@ class JobUpdateForm(forms.ModelForm):
             'end_date': DateInput()
             
         }
+
+class EducationUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Education
+        fields = '__all__'
 
 
 

@@ -11,12 +11,13 @@ from django.contrib.auth.hashers import make_password
 import pandas as pd
 # Register your models here.
 from django.urls import path
-from .models import Role,Alumni,Achievement,Company,Job,Course,Education,User
+from .models import Role,Alumni,Achievement,Company,Job,Course,Education,User,Personel
 
 admin.site.register(Role)
 admin.site.register(Achievement)
 #admin.site.register(Company)
 admin.site.register(Job)
+admin.site.register(Personel )
 
 
 class CsvImportForm(forms.Form):
@@ -36,7 +37,7 @@ class UserAdmin(BaseUserAdmin):
             csv_file = request.FILES["csv_upload"]
             
             if not csv_file.name.endswith('.csv'):
-                messages.warning(request, 'The wrong file type was uploaded')
+                messages.warning(request, 'The wrong file type was uploa ded')
                 return HttpResponseRedirect(request.path_info)
             
             file_data = csv_file.read().decode("utf-8")

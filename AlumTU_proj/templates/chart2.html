@@ -195,11 +195,8 @@
 <!----------------------------------------------------------------------- Nav Bar ----------------------------------------------------------->
 <div class="sticky">
   <div class="navbar">
-    <a href="/home/">หน้าหลัก</a>
-    <a href="/profile/">ข้อมูลส่วนตัว</a>
-    <a href="/profile/up/">แก้ไขข้อมูล</a>
-    <a href="/con/" >เครือข่ายศิษย์เก่า</a>
-    <a href="#chart" style="background-color: #c3002f;">ภาพรวม</a>
+    <a href="/dean/con/">เครือข่ายศิษย์เก่า</a>
+    <a href="/dean/chart/" style="background-color: #c3002f;">ภาพรวม</a>
     <div class="subnav">
       <button class="subnavbtn">เกี่ยวกับ <i class="fa fa-caret-down"></i></button>
         <div class="subnav-content">
@@ -270,10 +267,10 @@
                       datasets: [{
                         data: [{%for key in Department_count %} '{{key.Department__count}}', {% endfor %}],
                         backgroundColor:[
+                         "#c3002f",
+                          '#ffd13f',
                           '#63666a',
                           '#4298b5',
-                          "#c3002f",
-                          '#ffd13f',
                           '#be4d00',
                           '#0F44E0',
                           '#9EA939',

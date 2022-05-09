@@ -7,8 +7,8 @@ from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
-from .models import Role,Alumni,Achievement,Company,Job,Course,Education
-from .forms import AlumniUpdateForm,AchievementUpdateForm,JobUpdateForm,DateInput
+from .models import Role,Alumni,Achievement,Company,Job,Course,Education,Personel
+from .forms import AlumniUpdateForm,AchievementUpdateForm,JobUpdateForm,DateInput,EducationUpdateForm
 from django.forms.models import modelformset_factory
 from .forms import AchievementUpdateForm
 from urllib import request
@@ -18,7 +18,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.forms import formset_factory
 from django.urls import reverse
-from .filters import Jobfilter , Companyfilter
+from .filters import Jobfilter ,Educationfilter
 from django.forms.widgets import Select, Widget
 from django import forms
 
@@ -42,8 +42,26 @@ def loginpage(request):
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request,user)
-            return redirect('/profile')
+            try:
+                alum = Alumni.objects.get(User_id=user)
+            except Alumni.DoesNotExist:
+                alum = None
+            try:
+                perso = Personel.objects.get(User_id=user)
+            except Personel.DoesNotExist:
+                perso = None
+            
+            if alum != None:
+                if user == alum.User_id:
+                    login(request,user)
+                    return redirect('/profile')
+            else:
+                if perso.personel_type == 'officer':
+                    login(request,user)
+                    return redirect('/alumlist')
+                elif perso.personel_type == 'dean':
+                    login(request,user)
+                    return redirect('/dean/con')
     else:
         form = AuthenticationForm()
     return render(request,'login.html',{'form':form})
@@ -58,29 +76,47 @@ def home(request):
     return render(request,'home.html')
 
 
-class Alumnilist(ListView):
-    model = Alumni
-    template_name = 'alumni_list.html'
-
-
-
-def alumni_list(request):
-    alumni = Alumni.objects.all()
-    return render(request,'alumni_list.html',{'alumni':alumni})
-
 
 
 def connection(request):
     job = Job.objects.filter(Consent=True)
-    
+    education = Education.objects.all()
     myFilterjob = Jobfilter(request.GET,queryset=job)
     jobs = myFilterjob.qs
 
     context = {
         'job':jobs,
         'myFilterjob':myFilterjob,
+        'education' : education
     }
     return render(request, 'conection.html' , context)
+
+
+def connection2(request):
+    job = Job.objects.filter(Consent=True)
+    education = Education.objects.all()
+    myFilterjob = Jobfilter(request.GET,queryset=job)
+    jobs = myFilterjob.qs
+
+    context = {
+        'job':jobs,
+        'myFilterjob':myFilterjob,
+        'education' : education
+    }
+    return render(request, 'conection2.html' , context)
+
+def connection3(request):
+    job = Job.objects.filter(Consent=True)
+    education = Education.objects.all()
+    myFilterjob = Jobfilter(request.GET,queryset=job)
+    jobs = myFilterjob.qs
+
+    context = {
+        'job':jobs,
+        'myFilterjob':myFilterjob,
+        'education' : education
+    }
+    return render(request, 'conection3.html' , context)
 
 
 def profile(request):
@@ -172,12 +208,14 @@ from django.db.models import Count
 
 def AlumniChart(request):
 
+    Department_count=Job.objects.values('Department').annotate(Count('Department'))
     Sector_count=Job.objects.values('Company__Sector').annotate(Count('Company__Sector'))
     Industry_sector_count=Job.objects.values('Company__Industry_sector').annotate(Count('Company__Industry_sector'))
     Campus_count=Education.objects.values('Course__Campus').annotate(Count('Course__Campus'))
     Faculty_count=Education.objects.values('Course__Faculty').annotate(Count('Course__Faculty'))
     Course_title_count=Education.objects.values('Course__Course_title').annotate(Count('Course__Course_title'))
     context  = {
+        'Department_count':Department_count,
         'Sector_count':Sector_count,
         'Industry_sector_count':Industry_sector_count,
         'Campus_count':Campus_count,
@@ -189,6 +227,83 @@ def AlumniChart(request):
 
 def terms(request):
     return render(request,'terms-conditions.html')
+
+
+def AlumniChart2(request):
+
+    Department_count=Job.objects.values('Department').annotate(Count('Department'))
+    Sector_count=Job.objects.values('Company__Sector').annotate(Count('Company__Sector'))
+    Industry_sector_count=Job.objects.values('Company__Industry_sector').annotate(Count('Company__Industry_sector'))
+    Campus_count=Education.objects.values('Course__Campus').annotate(Count('Course__Campus'))
+    Faculty_count=Education.objects.values('Course__Faculty').annotate(Count('Course__Faculty'))
+    Course_title_count=Education.objects.values('Course__Course_title').annotate(Count('Course__Course_title'))
+    context  = {
+        'Department_count':Department_count,
+        'Sector_count':Sector_count,
+        'Industry_sector_count':Industry_sector_count,
+        'Campus_count':Campus_count,
+        'Faculty_count':Faculty_count,
+        'Course_title_count':Course_title_count,
+    }
+    return render(request, 'chart2.html', context)
+
+
+def terms(request):
+    return render(request,'terms-conditions.html')
+
+
+def alumlist(request):
+    education = Education.objects.all()
+
+    Filteredu = Educationfilter(request.GET,queryset=education)
+    educations = Filteredu.qs
+    context = {
+        'education':educations,
+        'Filteredu':Filteredu,
+    }
+    return render(request,'alumlist.html',context)
+
+
+def update_education(request, pk):
+    education = Education.objects.get(Education_id=pk)
+    edu_form = EducationUpdateForm(instance=education)
+
+    if request.method == 'POST':
+        edu_form = EducationUpdateForm(request.POST, instance=education)
+        if edu_form.is_valid():
+            edu_form.save()
+            return redirect('/alumlist/')
+    else:
+        edu_form = EducationUpdateForm(instance=education)
+
+    context = {'edu_form':edu_form}    
+    return render(request,'edu_update.html',context)
+
+def alumni_info(request, pk, epk):
+    alumni = Alumni.objects.get(Alumni_id=pk)
+    education = Education.objects.get(Education_id=epk)
+    job = Job.objects.filter(Alumni_id=pk)
+    achievement= Achievement.objects.filter(Alumni_id=pk)
+
+    context = {
+        'alumni':alumni,
+        'education':education,
+        'job':job,
+        'achievement':achievement
+    }
+    return render(request,'alumni_info.html',context)
+
+
+
+        
+
+
+
+
+
+
+
+
 
 
 

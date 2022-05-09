@@ -214,11 +214,8 @@
 <!----------------------------------------------------------------------- Nav Bar ----------------------------------------------------------->
 <div class="sticky">  
   <div class="navbar">
-    <a href="/home/">หน้าหลัก</a>
-    <a href="#pf" style="background-color: #c3002f;">ข้อมูลส่วนตัว</a>
-    <a href="up/">แก้ไขข้อมูล</a>
-    <a href="/con/">เครือข่ายศิษย์เก่า</a>
-    <a href="/chart/">ภาพรวม</a>
+    <a href="/alumlist/"style="background-color: #c3002f;">รายชื่อศิษย์เก่า</a>
+    <a href="/personel/con/">เครือข่ายศิษย์เก่า</a>
     <div class="subnav">
       <button class="subnavbtn">เกี่ยวกับ <i class="fa fa-caret-down"></i></button>
       <div class="subnav-content">
@@ -237,90 +234,83 @@
   </div>
 </div>
 
+
 <!----------------------------------------------------------------- Page Container ---------------------------------------------------------->
 <div class="card" style="background-color: white;">
-  <div class="row">
-    <div class="column" style="background-color: lightgray; width: 40%; padding: 16px; margin-top: 25px; margin-left: 25px; margin-bottom: 25px;">
-      {% load crispy_forms_tags %}
-        <img src="{{user.alumni.image.url}}" style="border-radius: 50%; width: 20%; margin-left: 40%; margin-top: 10%;">
-          <div class="container" style="margin-left: 5%; margin-right: 5%; padding: 9px;">
-            <h2 class="w3-opacity h8" style="color: #333; font-size: 22px; margin-bottom: 30px;"><b><span>Profile</span></b></h2>
-            <h5 class="w3-opacity hh1"><b>Name : </b></h5>
-            <p class="p1">{{user.alumni.Name}} {{user.alumni.Surname}} </p>
-            <h5 class="w3-opacity hh1"><b>Email : </b></h5>
-            <p class="p1">{{user.alumni.Email}}</p>
-            <h5 class="w3-opacity hh1"><b>Phone : </b></h5>
-            <p class="p1">{{user.alumni.PhoneNumber}}</p>
-            
-            <h5 class="w3-opacity hh1"><b>LinkedIn : </b></h5>
-            <p class="p1">{{user.alumni.LinkedIn}}</p>
-            
-            <h5 class="w3-opacity hh1"><b>Line ID : </b></h5>
-            <p class="p1">{{user.alumni.Line}}</p>
-            <a id="job"></a>
-            <h5 class="w3-opacity hh1"><b>Address : </b></h5>
-            <p class="p1">{{user.alumni.Sub_District}} , {{user.alumni.District}} , {{user.alumni.Province}} , {{user.alumni.Postal_code}}</p>
-            
-            <h2 class="w3-opacity h8" style="font-size: 22px; padding-top: 12px; margin-bottom: 30px;"><b><span>Work Info</span></b></h2>
-            {%with a=user.alumni %}
-              {% for job in job%}
-                {% if a == job.Alumni_id %}
-                  <h5 class="w3-opacity hh1"><b>Started - Ended: </b>{{job.Start_date.year}} - {{job.end_date.year}}</h5>
-                  <h5 class="w3-opacity hh1"><b>Career : </b>{{job.Job_title}}</h5>
-                  <h5 class="w3-opacity hh1"><b>Work At : </b>{{job.Company.Name}}</h5>
-                  <hr>
-                {%endif%}
-              {%endfor%}
-            {%endwith%}
-          </div>
-    </div>
-
-    <div class="column" style="width: 50%; background-color: white;">
-      <div class="w3-container" style="margin-left: 40px; margin-right: 20px; margin-top: 30px; font-size: 16px;">
-        {%with a=user.alumni %}
-          {% for education in education %}
-            {% if a == education.Alumni_id %}
-              <h2 class="w3-text-grey h9" style="margin-top: 45px; font-size: 24px; margin-bottom: 30px;"><b><span>Education</span></b></h2>
-              <h5 class="w3-opacity" style="font-size: 15px;"><b>Faculty : </b></h5>
-              <p class="p2">{{education.Course.Faculty}}</p>
-              <hr>
-              <h5 class="w3-opacity" style="font-size: 15px;"><b>สาขาวิชา : </b></h5>
-              <p class="p2">{{education.Course.Course_title}}</p>
-              <hr>
-              <h5 class="w3-opacity" style="font-size: 15px;"><b>Degree : </b></h5>
-              <p class="p2">{{education.Degree}}</p>
-              <hr>
-              <h5 class="w3-opacity" style="font-size: 15px;"><b>GPA : </b></h5>
-              <p class="p2">{{education.Gpa}}</p>
-              <hr>
+    <div class="row">
+      <div class="column" style="background-color: lightgray; width: 40%; padding: 16px; margin-top: 25px; margin-left: 25px; margin-bottom: 25px;">
+        {% load crispy_forms_tags %}
+          <img src="{{alumni.image.url}}" style="border-radius: 50%; width: 20%; margin-left: 40%; margin-top: 10%;">
+            <div class="container" style="margin-left: 5%; margin-right: 5%; padding: 9px;">
+              <h2 class="w3-opacity h8" style="color: #333; font-size: 22px; margin-bottom: 30px;"><b><span>Profile</span></b></h2>
+              <h5 class="w3-opacity hh1"><b>Name : </b></h5>
+              <p class="p1">{{alumni.Name}} {{alumni.Surname}} </p>
+              <h5 class="w3-opacity hh1"><b>Email : </b></h5>
+              <p class="p1">{{alumni.Email}}</p>
+              <h5 class="w3-opacity hh1"><b>Phone : </b></h5>
+              <p class="p1">{{alumni.PhoneNumber}}</p>
               
-              <h5 class="w3-opacity" style="font-size: 15px;"><b>Educted Date : </b></h5>
-              <p class="p2">{{education.Educated_date.year}}</p>
-              <hr>
-              <h5 class="w3-opacity" style="font-size: 15px;"><b>Graduated Date : </b></h5>
-              <p class="p2">{{education.Graduated_date.year}}</p>
-            {%endif%}
-          {%endfor%} 
-        {%endwith%} 
+              <h5 class="w3-opacity hh1"><b>LinkedIn : </b></h5>
+              <p class="p1">{{alumni.LinkedIn}}</p>
               
-              <h2 class="w3-text-grey h9" style="font-size: 24px; margin-bottom: 30px;" id="#job"><b><span>Achievement</span></b></h2><a id="ac"></a>
-              {%with a=user.alumni %}
-                {% for achievement in achievement %}
-                  {% if a == achievement.Alumni_id %}
-                    <h5 style="font-size: 13px; color: #c3002f;"><b class="w3-opacity" style="font-size: 15px; color: #333;">Year Rewarded : </b>{{achievement.Date.year}}</h5>
-                    <h5 style="font-size: 13px; color: #c3002f;"><b class="w3-opacity" style="font-size: 15px; color: #333;">Reward Name : </b>{{achievement.Achievement_name}}</h5>
-                    <h5 style="font-size: 13px; color: #c3002f;"><b class="w3-opacity" style="font-size: 15px; color: #333;">Institute : </b>{{achievement.Institute}}</h5>
+              <h5 class="w3-opacity hh1"><b>Line ID : </b></h5>
+              <p class="p1">{{alumni.Line}}</p>
+              <a id="job"></a>
+              <h5 class="w3-opacity hh1"><b>Address : </b></h5>
+              <p class="p1">{{alumni.Sub_District}} , {{alumni.District}} , {{alumni.Province}} , {{alumni.Postal_code}}</p>
+              
+              <h2 class="w3-opacity h8" style="font-size: 22px; padding-top: 12px; margin-bottom: 30px;"><b><span>Work Info</span></b></h2>
+            
+                {% for job in job%}
+                    <h5 class="w3-opacity hh1"><b>Started - Ended: </b>{{job.Start_date.year}} - {{job.end_date.year}}</h5>
+                    <h5 class="w3-opacity hh1"><b>Career : </b>{{job.Job_title}}</h5>
+                    <h5 class="w3-opacity hh1"><b>Work At : </b>{{job.Company.Name}}</h5>
                     <hr>
-                  {%endif%}
                 {%endfor%}
-              {%endwith%}  
+
+            </div>
+      </div>
+  
+      <div class="column" style="width: 50%; background-color: white;">
+        <div class="w3-container" style="margin-left: 40px; margin-right: 20px; margin-top: 30px; font-size: 16px;">
+                <h2 class="w3-text-grey h9" style="margin-top: 45px; font-size: 24px; margin-bottom: 30px;"><b><span>Education</span></b></h2>
+                <h5 class="w3-opacity" style="font-size: 15px;"><b>Faculty : </b></h5>
+                <p class="p2">{{education.Course.Faculty}}</p>
+                <hr>
+                <h5 class="w3-opacity" style="font-size: 15px;"><b>สาขาวิชา : </b></h5>
+                <p class="p2">{{education.Course.Course_title}}</p>
+                <hr>
+                <h5 class="w3-opacity" style="font-size: 15px;"><b>Degree : </b></h5>
+                <p class="p2">{{education.Degree}}</p>
+                <hr>
+                <h5 class="w3-opacity" style="font-size: 15px;"><b>GPA : </b></h5>
+                <p class="p2">{{education.Gpa}}</p>
+                <hr>
+                
+                <h5 class="w3-opacity" style="font-size: 15px;"><b>Educted Date : </b></h5>
+                <p class="p2">{{education.Educated_date.year}}</p>
+                <hr>
+                <h5 class="w3-opacity" style="font-size: 15px;"><b>Graduated Date : </b></h5>
+                <p class="p2">{{education.Graduated_date.year}}</p>
+
+                
+                <h2 class="w3-text-grey h9" style="font-size: 24px; margin-bottom: 30px;" id="#job"><b><span>Achievement</span></b></h2><a id="ac"></a>
+                  {% for achievement in achievement %}
+                      <h5 style="font-size: 13px; color: #c3002f;"><b class="w3-opacity" style="font-size: 15px; color: #333;">Year Rewarded : </b>{{achievement.Date.year}}</h5>
+                      <h5 style="font-size: 13px; color: #c3002f;"><b class="w3-opacity" style="font-size: 15px; color: #333;">Reward Name : </b>{{achievement.Achievement_name}}</h5>
+                      <h5 style="font-size: 13px; color: #c3002f;"><b class="w3-opacity" style="font-size: 15px; color: #333;">Institute : </b>{{achievement.Institute}}</h5>
+                      <hr>
+                  
+                  {%endfor%} 
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
 
-  <!------------------------------------------------------------ Footer --------------------------------------------------------------------->
-  <div class="footer" style="margin-top: 10px;">
+
+ <!------------------------------------------------------------ Footer --------------------------------------------------------------------->
+ <div class="footer" style="margin-top: 10px;">
     <h2>Contact</h2>
     <i class="fa fa-map-marker w3-text-white" style="width:30px"></i>มหาวิทยาลัยธรรมศาสตร์ ศูนย์รังสิต 99 ม.18 ถ.พหลโยธิน ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี 12121<br>
     <i class="fa fa-phone w3-text-white" style="width:30px"></i> Phone : +02 2022 02-2 564 4440<br>

@@ -26,10 +26,10 @@ from AlumTUapp.views import AchievementCreateView,JobCreateView
 #from django.views.generic import TemplateView # New
 
 urlpatterns = [
+    #Alumni's url
     path('',views.loginpage,name='login'),
     path('admin/', admin.site.urls),
     path('login/',views.loginpage,name='login'),
-    #path('signup/',views.signuppage),
     path('logout/', views.user_logout, name='logout'),
     path('home/',views.home),
     path('profile/',views.profile),
@@ -40,8 +40,16 @@ urlpatterns = [
     path('chart/',views.AlumniChart),
     path('profile/up/terms/',views.terms),
     path('profile/up/jobcreate/terms/',views.terms),
-    #path('', TemplateView.as_view(template_name="login_page/index.html")), # New
-    #path('accounts/', include('allauth.urls')), # New
+
+    #officer's url
+    path('alumlist/',views.alumlist),
+    path('update_education/<str:pk>/', views.update_education, name="update_education"),
+    path('aluminfo/<str:pk>/<str:epk>/', views.alumni_info, name="aluminfo"),
+    path('officer/con/',views.connection2),
+
+    #deans's url
+    path('dean/con/',views.connection3),
+    path('dean/chart/',views.AlumniChart2),
 ]
 
 if True:

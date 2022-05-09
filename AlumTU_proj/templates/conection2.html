@@ -233,11 +233,8 @@
 <!----------------------------------------------------------------------- Nav Bar ----------------------------------------------------------->
 <div class="sticky">
   <div class="navbar">
-    <a href="/home/">หน้าหลัก</a>
-    <a href="/profile/">ข้อมูลส่วนตัว</a>
-    <a href="/profile/up/">แก้ไขข้อมูล</a>
-    <a href="#con" style="background-color: #c3002f;">เครือข่ายศิษย์เก่า</a>
-    <a href="/chart/" >ภาพรวม</a>
+    <a href="/alumlist/">รายชื่อศิษย์เก่า</a>
+    <a href="personel/con/" style="background-color: #c3002f;">เครือข่ายศิษย์เก่า</a>
     <div class="subnav">
       <button class="subnavbtn">เกี่ยวกับ <i class="fa fa-caret-down"></i></button>
         <div class="subnav-content">
@@ -275,23 +272,23 @@
               </tr>
             </thead>
             <tbody>
-              {% for j in job %}
-              <tr>              
-                  <td scope="row">{{j.Job_title}} </td>
-                  <td scope="row">{{j.Department}}</td>
-                  <td scope="row">{{j.Company}}</td>
-                  <td scope="row">{{j.Alumni_id.Name}} {{j.Alumni_id.Surname}}</td>
-                  <td scope="row">{{j.Alumni_id.LinkedIn}}</td>
-                  <td scope="row">{{j.Alumni_id.Email}}</td> 
-                  <td scope="row">{{j.Alumni_id.Line}}</td>  
-                  {% for e in education %}
-                    {% if e.Alumni_id == j.Alumni_id %}
-                      <td scope="row">{{e.Course.Course_title}}</td> 
-                    {%endif%}
-                  {%endfor%}
-              </tr>
-          </tbody>
-            {%endfor%}     
+            {% for j in job %}
+                <tr>              
+                    <td scope="row">{{j.Job_title}} </td>
+                    <td scope="row">{{j.Department}}</td>
+                    <td scope="row">{{j.Company}}</td>
+                    <td scope="row">{{j.Alumni_id.Name}} {{j.Alumni_id.Surname}}</td>
+                    <td scope="row">{{j.Alumni_id.LinkedIn}}</td>
+                    <td scope="row">{{j.Alumni_id.Email}}</td> 
+                    <td scope="row">{{j.Alumni_id.Line}}</td>  
+                    {% for e in education %}
+                      {% if e.Alumni_id == j.Alumni_id %}
+                        <td scope="row">{{e.Course.Course_title}}</td> 
+                      {%endif%}
+                    {%endfor%}
+                </tr>
+            </tbody>
+              {%endfor%}    
         </table>
       </div>
     </form>
