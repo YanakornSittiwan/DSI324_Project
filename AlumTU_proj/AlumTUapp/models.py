@@ -129,11 +129,12 @@ class Job(models.Model):
    Start_date = models.DateField()
    end_date = models.DateField(null=True , blank=True)
 
+#Max_length
 class Course(models.Model):
     Course_id = models.IntegerField(primary_key=True)
-    Course_title = models.CharField(max_length=50)
-    Faculty = models.CharField(max_length=50)
-    Campus = models.CharField(max_length=10)
+    Course_title = models.CharField(max_length=70)
+    Faculty = models.CharField(max_length=70)
+    Campus = models.CharField(max_length=20)
     Credits = models.FloatField(max_length=4)
     def __str__(self):
         return ("สาขาวิชา:%s" %(self.Course_title))
