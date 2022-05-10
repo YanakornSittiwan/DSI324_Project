@@ -18,7 +18,7 @@ cd AlumTU_proj
 ```
 heroku login
 ```
-สร้างเว็บไซต์ชื่อ alumtuapp
+สร้างเว็บไซต์ชื่อ alumnitu
 ```
 heroku create alumnitu
 ```
