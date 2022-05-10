@@ -18,30 +18,33 @@ cd AlumTU_proj
 ```
 heroku login
 ```
+สร้างเว็บไซต์ชื่อ alumtuapp
 ```
-heroku create alumapp
+heroku create alumnitu
 ```
+ตั้งค่า heroku disable collect static
 
 ```
 heroku config:set DISABLE_COLLECTSTATIC=1
 ```
-
+ทำการเชื่อมต่อกับ PostgreSQL
 ```
 heroku addons:create heroku-postgresql:hobby-dev
 ```
-
+สร้าง git Repository บน Heroku และ push ไฟล์ทั้งหมดขึ้นไปบน Repository ที่สร้าง
 ```
+git init
 git add .
 git commit -m "deploy"
 git push heroku master
 ```
 
-
+Migrate โครงสร้างฐานข้อมูล
 ```
 heroku run python manage.py makemigrations
 heroku run python manage.py migrate
 ```
-
+เปิดเว็บที่ Deploy
 ```
 heroku open
 ```
