@@ -1,1 +1,0 @@
-web: gunicorn AlumTU_proj.wsgi --log-file -
