@@ -258,10 +258,13 @@
       <div class="w3-container" style="margin-left: 80px; margin-right: 20px; margin-top: 30px; font-size: 16px;">
         <h2 class="w3-opacity" style="font-size: 22px; padding-top: 12px;"><b>Edit Work Info.</b></h2>
           {% csrf_token %}
+          <div class="input">
             {{ j_form }}
+
             <a id="ac"></a>
             <p>ข้าพเจ้า ยินยอมให้นำข้อมูลไปใช้ในการเพิ่มเครือข่ายสิทธิเก่า <a href="terms/">Terms and Conditions</a></p>
             <p style="margin-top: 10px;"><a href="jobcreate/" class="addbtn"> +</a> Add More Work</p>
+          </div>
 
         <h2 class="w3-text-grey w3-padding-16" style="font-size: 22px;" id="#job"><b>Achievement</b></h2>
           {% csrf_token %}

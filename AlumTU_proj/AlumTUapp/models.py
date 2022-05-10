@@ -5,14 +5,10 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 
-# class CustomUser(AbstractUser):
-#     is_alumni = models.BooleanField(default=False)
-#     is_tustaff = models.BooleanField(default=False)
-#     is_dean = models.BooleanField(default=False)
 
-class Role(models.Model):
-    Role = models.CharField(max_length=50 , primary_key=True)
-    Authority = models.CharField(max_length=256)
+# class Role(models.Model):
+#     Role = models.CharField(max_length=50 , primary_key=True)
+#     Authority = models.CharField(max_length=256)
 
 class Alumni(models.Model):
     Alumni_id = models.IntegerField(primary_key=True)
@@ -23,12 +19,13 @@ class Alumni(models.Model):
     LinkedIn = models.CharField(max_length=256 , null=True , blank=True)
     Line = models.CharField(max_length=50 , null=True  , blank=True)
     Email = models.EmailField(max_length=50 , null=True  , blank=True)
-    Province = models.CharField(max_length=50)
-    District = models.CharField(max_length=50)
-    Sub_District = models.CharField(max_length=50)
-    Postal_code = models.IntegerField()
+    Province = models.CharField(max_length=50, null=True , blank=True)
+    District = models.CharField(max_length=50, null=True , blank=True)
+    Sub_District = models.CharField(max_length=50, null=True , blank=True)
+    Postal_code = models.IntegerField(null=True , blank=True)
     Address = models.CharField(max_length=50, null=True , blank=True)
     PhoneNumber = models.IntegerField( null=True)
+    Student_id = models.CharField(max_length=10 , null=True)
     def __str__(self):
         return ("Alumni id:%s" %(self.User_id))
     def get_absolute_url(self):
@@ -45,9 +42,9 @@ class Personel(models.Model):
     Personel_id = models.IntegerField(primary_key=True)
     personel_type = models.CharField(max_length=50 , choices=personel_type_choices , default='none')
     User_id = models.OneToOneField(User,on_delete=models.CASCADE)
-    Name = models.CharField(max_length=50 , null=True)
-    Surname = models.CharField(max_length=50 , null=True)
-    Email = models.EmailField(max_length=50 , null=True  , blank=True)
+    Name = models.CharField(max_length=50 , default='none')
+    Surname = models.CharField(max_length=50, default='none')
+    Email = models.EmailField(max_length=50 , default='none@gmail.com')
 
 
 

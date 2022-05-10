@@ -274,7 +274,8 @@
           <tbody>
             {% for e in education %}
               <tr>              
-                <td scope="row">{{e.Alumni_id.Alumni_id}} </td>
+                <!-- <td scope="row">{{e.Alumni_id.Alumni_id}} </td> -->
+                <td scope="row">{{e.Alumni_id.Student_id}} </td>
                 <td scope="row">{{e.Alumni_id.Name}} {{e.Alumni_id.Surname}} </td>
                 <td scope="row">{{e.Course.Faculty}}</td>
                 <td scope="row">{{e.Course.Course_title}}</td>

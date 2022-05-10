@@ -8,7 +8,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
-from .models import Role,Alumni,Achievement,Company,Job,Course,Education,Personel
+from .models import Alumni,Achievement,Company,Job,Course,Education,Personel
 from .forms import AlumniUpdateForm,AchievementUpdateForm,JobUpdateForm,DateInput,EducationUpdateForm
 from django.forms.models import modelformset_factory
 from .forms import AchievementUpdateForm
@@ -335,11 +335,11 @@ class CompanyDetail(generics.RetrieveAPIView):
 
 
 class JobList(generics.ListAPIView):
-    queryset  = Job.objects.all()
+    queryset  = Job.objects.filter(Consent=True)
     serializer_class  = JobSerializer
 
 class JobDetail(generics.RetrieveAPIView):
-    queryset  = Job.objects.all()
+    queryset  = Job.objects.filter(Consent=True)
     serializer_class  = JobSerializer
 
 

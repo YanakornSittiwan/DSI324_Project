@@ -1,16 +1,18 @@
 from rest_framework import serializers
 from .models import Alumni,Achievement,Company,Job,Course,Education,User,Personel
 
+
 class AlumniSerializer(serializers.ModelSerializer):
     class Meta:
         model = Alumni
-        fields = ('Alumni_id','User_id','Name' , 'Surname' , 'LinkedIn','Line','Email' ,'PhoneNumber','Address','Sub_District','District','Province','Postal_code','image')
+        fields = ('Alumni_id','User_id','Name' )
 
 
 class PersonelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Personel
-        fields = ('Personel_id','personel_type','User_id','Name' , 'Surname','Email')
+        fields = ('Personel_id','personel_type','User_id','Name')
+
 
 class AchievementSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,7 +27,7 @@ class CompanySerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
-        fields = (',Job_id','Alumni_id','Company' ,'Job_title','Department', 'Start_date','end_date','Consent')
+        fields = ('Job_id','Alumni_id','Company' ,'Job_title','Department', 'Start_date','end_date','Consent')
 
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:

@@ -11,11 +11,9 @@ from django.contrib.auth.hashers import make_password
 import pandas as pd
 # Register your models here.
 from django.urls import path
-from .models import Role,Alumni,Achievement,Company,Job,Course,Education,User,Personel
+from .models import Alumni,Achievement,Company,Job,Course,Education,User,Personel
 
-admin.site.register(Role)
 admin.site.register(Achievement)
-#admin.site.register(Company)
 admin.site.register(Job)
 admin.site.register(Personel )
 
@@ -41,7 +39,7 @@ class UserAdmin(BaseUserAdmin):
                 return HttpResponseRedirect(request.path_info)
             
             file_data = csv_file.read().decode("utf-8")
-            csv_data = file_data.split("\n")
+            csv_data = file_data.split("\r\n")
 
             for x in csv_data[1:]:
                 fields = x.split(",")
@@ -83,7 +81,7 @@ class AlumniAdmin(admin.ModelAdmin):
                 return HttpResponseRedirect(request.path_info)
             
             file_data = csv_file.read().decode("utf-8")
-            csv_data = file_data.split("\n")
+            csv_data = file_data.split("\r\n")
 
             for x in csv_data[1:]:
                 fields = x.split(",")
@@ -97,7 +95,8 @@ class AlumniAdmin(admin.ModelAdmin):
                     Sub_District=fields[6],
                     Postal_code=fields[7],
                     Address = fields[8],
-                    PhoneNumber=fields[9]
+                    PhoneNumber=fields[9],
+                    Student_id = fields[10]
                     )
             url = reverse('admin:index')
             return HttpResponseRedirect(url)
@@ -126,7 +125,7 @@ class CourseAdmin(admin.ModelAdmin):
                 return HttpResponseRedirect(request.path_info)
             
             file_data = csv_file.read().decode("utf-8")
-            csv_data = file_data.split("\n")
+            csv_data = file_data.split("\r\n")
 
             for x in csv_data[1:]:
                 fields = x.split(",")
@@ -146,6 +145,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 admin.site.register(Course, CourseAdmin)
 
+#\r
 class EducationAdmin(admin.ModelAdmin):
 
     def get_urls(self):
@@ -163,7 +163,7 @@ class EducationAdmin(admin.ModelAdmin):
                 return HttpResponseRedirect(request.path_info)
             
             file_data = csv_file.read().decode("utf-8")
-            csv_data = file_data.split("\n")
+            csv_data = file_data.split("\r\n")
 
             for x in csv_data[1:]:
                 fields = x.split(",")
@@ -202,7 +202,7 @@ class CompamyAdmin(admin.ModelAdmin):
                 return HttpResponseRedirect(request.path_info)
             
             file_data = csv_file.read().decode("utf-8")
-            csv_data = file_data.split("\n")
+            csv_data = file_data.split("\r\n")
 
             for x in csv_data[1:]:
                 fields = x.split(",")
