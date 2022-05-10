@@ -8,7 +8,8 @@
   3)มีการขอคำยินยอมให้นำข้อมูลการทำงานและข้อมูลการติดต่อเปิดเผยต่อผู้ใช้คนอื่น \
   4)สามารถเรียกดูข้อมูล การทำงานและการติดต่อกับผู้ใช้คนอื่น \
   5)ระบบสามารถแสดงกราฟภาพรวมการทำงาน และการศึกษาของศิษย์เก่า
-  
+
+
 ## ขั้นตอนการ Deploy
 เข้าไปยังโฟลเดอร์ของโปรเจค
 ```
@@ -48,6 +49,31 @@ heroku run python manage.py migrate
 ```
 heroku open
 ```
+
+## เข้าไปยัง Repository เพื่อแก้ไข หลังจากที่ Deploy แล้ว
+
+เข้าไปยัง Remote Repository บน Heroku โดยที่ต้อง login ก่อน
+
+```
+heroku git:remote -a alumnitu
+```
+หากต้องการแก้ไขไฟล์ และเมื่อแก้ไขเสร็จให้ Push ไฟล์ ไปที่ Remote Repository
+```
+git add .
+git commit -m "edit"
+git push heroku master
+```
+หากมีการเปลี่ยแปลงโครงสร้างตารางให้ทำการ Migrate
+```
+heroku run python manage.py makemigrations
+heroku run python manage.py migrate
+```
+เปิดเว็บที่ Deploy
+```
+heroku open
+```
+
+
 
 
 
