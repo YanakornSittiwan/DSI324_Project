@@ -1,74 +1,93 @@
 # DSI321/DSI324_Project
-# Alumni Service System Project
+# Alumni Service System 
 ## วัตถุประสงค์
-  เพื่อให้มหาวิทยาลัยสามารถติดต่อกับศิษเก่าได่ และเพื่อให้เกิดการติดต่อสื่อสารระหว่างศฺษเก่าด้วยกันเอง
+1) เพื่อให้มหาวิทยาลัยสามารถติดต่อกับศิษย์เก่าได่ และเพื่อให้เกิดการติดต่อสื่อสารระหว่างศิษย์เก่าด้วยกันเอง
+2) เกิดเครื่อค่ายความสัมพันธ์ระหว่ามหาวิทยาลัยกับศิษย์เก่า และระหว่างศิษย์เก่ากับศิษย์เก่าด้วยกัน
 ## วิธีใช้
-  1)Admin ต้องอัพโหลดไฟล์ csv ของ User , Alumni , Course , Education , Company \
-  2)User Alumni สามารถดู , แก้ไข, เพิ่ม ข้อมูลรางวัลและข้อมูลการทำงานได้ \
-  3)มีการขอคำยินยอมให้นำข้อมูลการทำงานและข้อมูลการติดต่อเปิดเผยต่อผู้ใช้คนอื่น \
-  4)สามารถเรียกดูข้อมูล การทำงานและการติดต่อกับผู้ใช้คนอื่น \
-  5)ระบบสามารถแสดงกราฟภาพรวมการทำงาน และการศึกษาของศิษย์เก่า
+### แบ่งผู้ใช้เป็น 4 ระดับ
+1) Admin 
+    - Admin ต้องอัพโหลดไฟล์ csv ของ User , Alumni , Course , Education , Company
+2) Alumni
+    - login เพื่อเข้าระบบในฐานะศิษย์เก่าได้
+    - สามารถดู , แก้ไข, เพิ่ม ข้อมูลรางวัลและข้อมูลการทำงานได้
+    - สามารถดูข้อมูลการทำงานของศิษย์เก่าคนอื่น โดยที่ต้องได้รับการยินยอมจากศิษย์เก่าคนนั้นๆก่อน
+    - สามารถดูข้อมูลภาพรวมการทำงานของศิษย์เก่าโดยแสดงผลออกมาเป็นรูปแบบกราฟ
+3) Officer
+    - login เพื่อเข้าระบบในฐานะเจ้าหน้าที่ฝ่ายวิชาการได้
+    - สามารถดูข้อมูลศิษเก่า และข้อมูลการทำงานของศิษย์เก่าได้
+    - สามารถแก้ไขข้อมูลการศึกษาของศิษย์เก่าได้
+    - สามารถดูข้อมูลภาพรวมการทำงานของศิษย์เก่าโดยแสดงผลออกมาเป็นรูปแบบกราฟ
+    
+4) Dean
+    - login เพื่อเข้าระบบในฐานะรองคณะบดีได้
+    - สามารถข้อมูลการทำงานของศิษย์เก่าได้
+    - สามารถดูข้อมูลภาพรวมการทำงานของศิษย์เก่าโดยแสดงผลออกมาเป็นรูปแบบกราฟ
 
+## การ Deploy บน Heroku
+### Requirement
+1) ติดตั้ง Heroku CLI และมีบัญชี Heroku: [Heroku CLI Download](https://devcenter.heroku.com/articles/heroku-cli) , [Heroku Signup](https://signup.heroku.com/)
+2) มีไฟล์ requirement.txt เพื่อบอกว่าจำเป็นต้องใช้ library ใดบ้าง
+3) มี Procfile
 
-## ขั้นตอนการ Deploy
-เข้าไปยังโฟลเดอร์ของโปรเจค
+### การ Deploy บน Heroku
+
+1) เข้าไปยังโฟลเดอร์ของโปรเจค โดยในที่นี้จะใช้ชื่อโปรเจคว่า AlumTU_proj
 ```
 cd AlumTU_proj
 ```
-ลอคอิน Heroku
+2) ลอคอิน Heroku
 ```
 heroku login
 ```
-สร้างเว็บไซต์ชื่อ alumnitu
+3) สร้างเว็บไซต์บน Heroku ชื่อ alumnitu
 ```
 heroku create alumnitu
 ```
-ตั้งค่า heroku disable collect static
-
+4) ตั้งค่า heroku disable collect static
 ```
 heroku config:set DISABLE_COLLECTSTATIC=1
 ```
-ทำการเชื่อมต่อกับ PostgreSQL
+5) ทำการเชื่อมต่อกับ [Heroku PostgreSQL](https://elements.heroku.com/addons/heroku-postgresql)
 ```
 heroku addons:create heroku-postgresql:hobby-dev
 ```
-สร้าง git Repository บน Heroku และ push ไฟล์ทั้งหมดขึ้นไปบน Repository ที่สร้าง
+6) สร้าง git Repository บน Heroku และ push ไฟล์ทั้งหมดขึ้นไปบน Repository ที่สร้าง
 ```
 git init
 git add .
 git commit -m "deploy"
 git push heroku master
 ```
-
-Migrate โครงสร้างฐานข้อมูล
+7) Migrate โครงสร้างฐานข้อมูล
 ```
 heroku run python manage.py makemigrations
 heroku run python manage.py migrate
 ```
-เปิดเว็บที่ Deploy
+8) เปิดเว็บที่ Deploy 
+  จะได้เว็บไซต์ดังนี้ https://alumnitu.herokuapp.com/
 ```
 heroku open
 ```
 
-## เข้าไปยัง Repository เพื่อแก้ไข หลังจากที่ Deploy แล้ว
+### เข้าไปยัง Repository เพื่อแก้ไข หลังจากที่ Deploy แล้ว
 
-เข้าไปยัง Remote Repository บน Heroku โดยที่ต้อง login ก่อน
+1) เข้าไปยัง Remote Repository บน Heroku ที่ได้สรา้งไว้ในขั้นตอนก่อนหน้า โดยที่ต้อง login ก่อน
 
 ```
 heroku git:remote -a alumnitu
 ```
-หากต้องการแก้ไขไฟล์ และเมื่อแก้ไขเสร็จให้ Push ไฟล์ ไปที่ Remote Repository
+2) หากต้องการแก้ไขไฟล์ และเมื่อแก้ไขเสร็จให้ Push ไฟล์ ไปที่ Remote Repository
 ```
 git add .
 git commit -m "edit"
 git push heroku master
 ```
-หากมีการเปลี่ยแปลงโครงสร้างตารางให้ทำการ Migrate
+3) หากมีการเปลี่ยแปลงโครงสร้างตารางให้ทำการ Migrate
 ```
 heroku run python manage.py makemigrations
 heroku run python manage.py migrate
 ```
-เปิดเว็บที่ Deploy
+4) เปิดเว็บที่ Deploy
 ```
 heroku open
 ```
